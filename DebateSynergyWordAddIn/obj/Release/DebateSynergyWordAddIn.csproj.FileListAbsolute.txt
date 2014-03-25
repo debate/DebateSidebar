@@ -1,0 +1,17 @@
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\bin\Release\DebateSynergyWordAddIn.dll
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\bin\Release\DebateSynergyWordAddIn.pdb
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\bin\Release\DebateSynergyWordAddIn.dll.manifest
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\bin\Release\DebateSynergyWordAddIn.vsto
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.DebateRibbonButton.resources
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.MainPanel.resources
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.MimimizeFont.resources
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.Properties.Resources.resources
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.SpeechAdd.resources
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.csproj.GenerateResource.Cache
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.dll
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.pdb
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.csprojResolveAssemblyReference.cache
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\obj\Release\DebateSynergyWordAddIn.SettingsMenu.resources
+D:\Projects\DebateSynergyWord\DebateSynergyWordAddIn\bin\Release\DebateSynergyWordAddIn.dll.config
