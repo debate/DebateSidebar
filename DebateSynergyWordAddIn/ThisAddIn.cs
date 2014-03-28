@@ -31,8 +31,8 @@ namespace DebateSynergyWordAddIn
             };
 
             //keyboard hooks
-        //     if (Properties.Settings.Default.Hotkeys)
-            Hotkeys.SetHook();
+            if (Properties.Settings.Default.Hotkeys)
+                Hotkeys.SetHook();
 
 
             Globals.ThisAddIn.Application.ActiveWindow.WindowState = WdWindowState.wdWindowStateMaximize;
@@ -56,7 +56,6 @@ namespace DebateSynergyWordAddIn
             {
                 addTemplate(document);
                 addTaskbar();
-
             }
         }
 
@@ -77,7 +76,6 @@ namespace DebateSynergyWordAddIn
             {
                 addTemplate(document);
                 addTaskbar();
-
             }
         }
 
@@ -100,14 +98,14 @@ namespace DebateSynergyWordAddIn
                 Document d = Globals.ThisAddIn.Application.ActiveDocument;
 
 
-                if (d.Styles["Heading 1"].NameLocal == "Pocket" && d.Styles["Normal"].Font.Name == s.FontName &&
+                if ( d.Styles["Normal"].Font.Name == s.FontName &&
                      d.Styles["Normal"].Font.Size == Convert.ToInt32(s.FontSize)) return;
 
 
 
                 d.Styles["Normal"].Font.Name = s.FontName;
                 d.Styles["Normal"].Font.Size = Convert.ToInt32(s.FontSize);
-                //   d.Styles["Heading 1"].NameLocal = "Pocket";
+               // d.Styles["Heading 1"].NameLocal = "Pocket";
                 d.Styles["Heading 1"].Font.Size = Convert.ToInt32(s.FontSize) + 9;
                 d.Styles["Heading 1"].Font.Name = s.FontName;
                 d.Styles["Heading 1"].Font.Underline = WdUnderline.wdUnderlineSingle;

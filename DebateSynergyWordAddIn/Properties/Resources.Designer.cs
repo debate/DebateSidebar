@@ -93,16 +93,6 @@ namespace DebateSynergyWordAddIn.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap d8citereq {
-            get {
-                object obj = ResourceManager.GetObject("d8citereq", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap d8fclear {
             get {
                 object obj = ResourceManager.GetObject("d8fclear", resourceCulture);
@@ -126,16 +116,6 @@ namespace DebateSynergyWordAddIn.Properties {
         internal static System.Drawing.Bitmap d8fhighlite {
             get {
                 object obj = ResourceManager.GetObject("d8fhighlite", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap d8fnormal {
-            get {
-                object obj = ResourceManager.GetObject("d8fnormal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,16 +193,6 @@ namespace DebateSynergyWordAddIn.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap d8s1nc {
-            get {
-                object obj = ResourceManager.GetObject("d8s1nc", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap d8s2ar {
             get {
                 object obj = ResourceManager.GetObject("d8s2ar", resourceCulture);
@@ -263,6 +233,16 @@ namespace DebateSynergyWordAddIn.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap d8timerlogo {
+            get {
+                object obj = ResourceManager.GetObject("d8timerlogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap f {
             get {
                 object obj = ResourceManager.GetObject("f", resourceCulture);
@@ -286,16 +266,6 @@ namespace DebateSynergyWordAddIn.Properties {
         internal static System.Drawing.Bitmap folders {
             get {
                 object obj = ResourceManager.GetObject("folders", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap headings {
-            get {
-                object obj = ResourceManager.GetObject("headings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

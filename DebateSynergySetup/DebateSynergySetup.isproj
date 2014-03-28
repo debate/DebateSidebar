@@ -29,7 +29,13 @@
 	</ItemGroup>
 	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2013Limited\InstallShield.targets"/>
 	<ItemGroup/>
+	<ItemGroup/>
+	<ItemGroup/>
 	<ItemGroup>
+		<ProjectReference Include="..\DebateSynergyTimer\DebateSynergyTimer.csproj">
+			<Name>DebateSynergyTimer</Name>
+			<Project>{0B54BB9C-8B83-4D1F-8E5C-323B04479A2E}</Project>
+		</ProjectReference>
 		<ProjectReference Include="..\DebateSynergyWordAddIn\DebateSynergyWordAddIn.csproj">
 			<Name>DebateSynergyWordAddIn</Name>
 			<Project>{0021A807-3CA1-4D8B-A753-0B740DB3E81B}</Project>

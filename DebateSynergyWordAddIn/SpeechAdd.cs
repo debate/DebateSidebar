@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -34,10 +35,20 @@ namespace DebateSynergyWordAddIn
             }
             curDocsList.SelectedIndex = 0;
 
-            if (Globals.ThisAddIn.speechDoc != null && Globals.ThisAddIn.speechDoc.Name != null)
-                textCurrentDoc.Text += Globals.ThisAddIn.speechDoc.Name;
-            else
+            try
+            {
+                if (Globals.ThisAddIn.speechDoc != null && Globals.ThisAddIn.speechDoc.Name != null)
+                    textCurrentDoc.Text += Globals.ThisAddIn.speechDoc.Name;
+                else
+                    textCurrentDoc.Text += "None";
+            }
+            catch (Exception err)
+            {
                 textCurrentDoc.Text += "None";
+            }
+
+
+          
 
         }
 

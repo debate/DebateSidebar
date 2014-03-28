@@ -175,9 +175,9 @@
             this.bOpenWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bOpenWeb.Location = new System.Drawing.Point(6, 37);
             this.bOpenWeb.Name = "bOpenWeb";
-            this.bOpenWeb.Size = new System.Drawing.Size(252, 17);
+            this.bOpenWeb.Size = new System.Drawing.Size(226, 17);
             this.bOpenWeb.TabIndex = 5;
-            this.bOpenWeb.Text = "Don\'t show sidebar and custom styles by default";
+            this.bOpenWeb.Text = "Show sidebar and custom styles by default";
             this.bOpenWeb.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -455,9 +455,9 @@
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(287, 91);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 13);
+            this.label16.Size = new System.Drawing.Size(48, 13);
             this.label16.TabIndex = 39;
-            this.label16.Text = "Refresh";
+            this.label16.Text = "DocMap";
             // 
             // k10
             // 
@@ -699,7 +699,7 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "March 2014";
             // 
-            // Settings
+            // SettingsMenu
             // 
             this.AcceptButton = this.bOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -713,7 +713,7 @@
             this.Controls.Add(this.bOK);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Settings";
+            this.Name = "SettingsMenu";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

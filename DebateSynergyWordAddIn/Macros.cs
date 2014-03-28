@@ -17,18 +17,9 @@ namespace DebateSynergyWordAddIn
 {
     class Macros
     {
-
         public static Application a = Globals.ThisAddIn.Application;
-
-        [DllImport("user32.dll")]
-        static extern bool SetForegroundWindow(IntPtr hWnd);
-
-
-
         public static void Underline()
         {
-
-           
             EscToggle = !EscToggle;
 
             while (EscToggle == false)
@@ -64,18 +55,59 @@ namespace DebateSynergyWordAddIn
         }
 
 
+        public static int refreshTime = 0;
+        public static int refreshDocLevel = 1;
         public static void refreshDoc()
         {
-          
+            int nowTime = DateTime.Now.Minute * 60 + DateTime.Now.Second;
+
+
+            MainPanel c = null;
             for (int i = 0; i < Globals.ThisAddIn.CustomTaskPanes.Count; i++)
-                if (Globals.ThisAddIn.CustomTaskPanes[i].Window != null
-                    && Globals.ThisAddIn.CustomTaskPanes[i].Window.Equals(a.ActiveDocument.ActiveWindow))
+                if (Globals.ThisAddIn.CustomTaskPanes[i].Window != null && Globals.ThisAddIn.CustomTaskPanes[i].Window.Equals(a.ActiveDocument.ActiveWindow))
                 {
-                   MainPanel c =  (MainPanel)Globals.ThisAddIn.CustomTaskPanes[i].Control;
-                   c.populateDoc();
-                   
-                    break;
+                   c = (MainPanel)Globals.ThisAddIn.CustomTaskPanes[i].Control;
+                   break;
                 }
+
+          
+            if (nowTime - 10 < refreshTime)
+            {
+                if (refreshDocLevel == 4)
+                {
+                    c.treeDoc.ExpandAll();
+                    refreshDocLevel = 1;
+
+                }
+                else if (refreshDocLevel == 3)
+                {
+                    refreshDocLevel = 4;
+                    c.treeDoc.CollapseAll();
+                    for (int j = 0; j < c.treeDoc.Nodes.Count; j++)
+                        c.treeDoc.Nodes[j].Expand();
+                    for (int j = 0; j < c.treeDoc.Nodes.Count; j++)
+                        for (int k = 0; k < c.treeDoc.Nodes[j].Nodes.Count; k++)
+                            c.treeDoc.Nodes[j].Nodes[k].Expand();
+                }
+                else if (refreshDocLevel == 2)
+                {
+                    refreshDocLevel = 3;
+                    c.treeDoc.CollapseAll();
+                    for (int j = 0; j < c.treeDoc.Nodes.Count; j++)
+                        c.treeDoc.Nodes[j].Expand();
+                } else if (refreshDocLevel == 1){
+                    refreshDocLevel = 2;
+                    c.treeDoc.CollapseAll();
+                }
+
+           } else {
+                c.populateDoc();
+                refreshDocLevel = 2;
+            }
+
+
+            refreshTime = nowTime;
+                 
 
           
 
@@ -141,15 +173,13 @@ namespace DebateSynergyWordAddIn
 
         public static void PasteUnformatted()
         {
+            if (System.Windows.Clipboard.ContainsData(System.Windows.DataFormats.Text) == false)
+                return;
+            
             object paste = (object) System.Windows.Clipboard.GetDataObject().GetData(System.Windows.DataFormats.Text);
-
             
             a.Selection.Collapse(1);
-
             a.Selection.Text = paste.ToString();
-
-
-
         }
 
         public static bool EscToggle = true;
@@ -423,7 +453,7 @@ namespace DebateSynergyWordAddIn
             if ((int)a.Selection.Type >1) 
                 a.Selection.Copy();
 
-            if (Globals.ThisAddIn.speechDoc == null)
+            if (Globals.ThisAddIn.speechDoc == null || Globals.ThisAddIn.speechDoc.ActiveWindow == null)
             {
                 SpeechAdd();
                 if (Globals.ThisAddIn.speechDoc == null)
@@ -474,18 +504,26 @@ namespace DebateSynergyWordAddIn
                 Globals.ThisAddIn.speechDoc = d;
 
                 string savePath;
-                if (Properties.Settings.Default.SpeechDirectory!=null)
+                if (Properties.Settings.Default.SpeechDirectory!="")
                     savePath = Properties.Settings.Default.SpeechDirectory;
-                else if (Properties.Settings.Default.FilesDirectory != null)
+                else if (Properties.Settings.Default.FilesDirectory != "")
                     savePath = Properties.Settings.Default.FilesDirectory;
-                else savePath = Environment.SpecialFolder.Desktop.ToString();
+                else savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
+               
                 savePath +=  "\\" + SpeechAddName;
 
                 while (File.Exists(savePath))
                     savePath += " - Copy";
-                
-                d.SaveAs(savePath);
+                try
+                {
+                    d.SaveAs(savePath);
+                }
+                catch (Exception err)
+                {
+                    d.Save();
+                }
+                ;
             }
 
             Microsoft.Office.Interop.Word.Window w = Globals.ThisAddIn.speechDoc.ActiveWindow;
@@ -535,6 +573,12 @@ namespace DebateSynergyWordAddIn
 
         public static void uploadSpeech()
         {
+        	int i;
+            if (InternetGetConnectedState(out i, 0) == false)
+            {
+                MessageBox.Show("No internet connection");
+                return;
+            }
 
             //copy as rtf
             a.ActiveDocument.StoryRanges[WdStoryType.wdMainTextStory].Copy();
@@ -546,28 +590,20 @@ namespace DebateSynergyWordAddIn
 
             var textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
 
-            using (var rtfMemoryStream = new MemoryStream())
-            {
-                using (var rtfStreamWriter = new StreamWriter(rtfMemoryStream))
-                {
-                    rtfStreamWriter.Write(rtfCopy);
-                    rtfStreamWriter.Flush();
-                    rtfMemoryStream.Seek(0, SeekOrigin.Begin);
-                    textRange.Load(rtfMemoryStream, System.Windows.DataFormats.Rtf);
-                }
-            }
-
-            using (var rtfMemoryStream = new MemoryStream())
-            {
-
-                textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
-                textRange.Save(rtfMemoryStream, System.Windows.DataFormats.Xaml);
-                rtfMemoryStream.Seek(0, SeekOrigin.Begin);
-                using (var rtfStreamReader = new StreamReader(rtfMemoryStream))
-                {
-                    o = rtfStreamReader.ReadToEnd();
-                }
-            }
+            MemoryStream rtfMemoryStream = new MemoryStream();
+            StreamWriter rtfStreamWriter = new StreamWriter(rtfMemoryStream);
+            rtfStreamWriter.Write(rtfCopy);
+            rtfStreamWriter.Flush();
+            rtfMemoryStream.Seek(0, SeekOrigin.Begin);
+            textRange.Load(rtfMemoryStream, System.Windows.DataFormats.Rtf);
+            
+            rtfMemoryStream = new MemoryStream();
+            textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+            textRange.Save(rtfMemoryStream, System.Windows.DataFormats.Xaml);
+            rtfMemoryStream.Seek(0, SeekOrigin.Begin);
+            StreamReader rtfStreamReader = new StreamReader(rtfMemoryStream);
+            o = rtfStreamReader.ReadToEnd();
+                
 
             //xaml to html
             o = new Regex("<Section [^>]+>").Replace(o, "");
@@ -577,11 +613,8 @@ namespace DebateSynergyWordAddIn
             o = new Regex("</Hyperlink").Replace(o, "</a");
 
             foreach (Match m in new Regex("<Span>[^>^<]+</Span>").Matches(o))
-            {
                 o = o.Replace(m.Value, m.Value.Replace("<Span>", "").Replace("</Span>", ""));
-            }
-
-
+            
             foreach (Match m in new Regex("<(Span|Paragraph)[^>]+>").Matches(o))
             {
                 string v = m.Value;
@@ -597,7 +630,7 @@ namespace DebateSynergyWordAddIn
                 r += v.Contains("Background") ? "background-color:" + new Regex("Background=\"[^\"]+\"").Match(v).Value.Substring(12).TrimEnd("\""[0]) + ";" : null;
                 r += v.Contains("Foreground") ? "color:" + new Regex("Foreground=\"[^\"]+\"").Match(v).Value.Substring(12).TrimEnd("\""[0]) + ";" : null;
                 r += "\" class=\"";
-
+                r += v.Contains("TextAlignment=\"Center") ? " heading " : null;
                 r += v.Contains("TextDecorations") ? " underline " : null;
                 r += v.Contains("Background") ? " hilite " : null;
                 r += v.Contains("Bold") ? " bold " : null;
@@ -607,21 +640,11 @@ namespace DebateSynergyWordAddIn
                 o = o.Replace(m.Value, r);
             }
 
-
-            string htmlCopy = o.Replace("&", "%26");
-
-            int i;
-            if (InternetGetConnectedState(out i, 0) == false)
-            {
-                MessageBox.Show("No internet connection");
-                return;
-            }
-            
+            string htmlCopy = o.Replace("&", "%26");           
 
             WebRequest request = WebRequest.Create("http://debatesynergy.com/speech.php");
             request.Method = "POST";
-            string postData = "&data=" + htmlCopy;
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            byte[] byteArray = Encoding.UTF8.GetBytes("&data=" + htmlCopy);
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = byteArray.Length;
             Stream dataStream = request.GetRequestStream();
@@ -631,18 +654,14 @@ namespace DebateSynergyWordAddIn
 
             if (responseFromServer.ToLower().Contains("error"))
                 MessageBox.Show(responseFromServer);
-            else
-            //open URL with read speech 
-            System.Diagnostics.Process.Start(Path.Combine(Environment.GetEnvironmentVariable("SystemRoot"), "explorer.exe"),
-                "\"" + "http://debatesynergy.com/" + responseFromServer + "\"");
+            else //open URL with read speech 
+                Process.Start(Path.Combine(Environment.GetEnvironmentVariable("SystemRoot"), "explorer.exe"),
+                    "\"" + "http://debatesynergy.com/" + responseFromServer + "\"");
 
         }
-
-
-        [System.Runtime.InteropServices.DllImport("wininet.dll")]
+        
+        [DllImport("wininet.dll")]
         private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
-
-
     }
 }
 

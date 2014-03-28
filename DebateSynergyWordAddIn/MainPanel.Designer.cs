@@ -31,9 +31,9 @@
             this.expandAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeDoc = new System.Windows.Forms.TreeView();
             this.contextTreeDoc = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.refreshToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.promoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.collapseAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bCollapseHeading2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,13 +59,13 @@
             this.selectSimilarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caselistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFormattingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bSpeechMain = new System.Windows.Forms.ToolStripSplitButton();
             this.bSpeechAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.sendToSpeechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bReadSpeech = new System.Windows.Forms.ToolStripMenuItem();
             this.bCopyUSB = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bSwitchWindow = new System.Windows.Forms.ToolStripDropDownButton();
             this.bSearchString = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripContainer4.ContentPanel.SuspendLayout();
@@ -176,22 +176,6 @@
             this.contextTreeDoc.Name = "treeDocContentMenu";
             this.contextTreeDoc.Size = new System.Drawing.Size(191, 158);
             // 
-            // promoteToolStripMenuItem
-            // 
-            this.promoteToolStripMenuItem.Image = global::DebateSynergyWordAddIn.Properties.Resources.f;
-            this.promoteToolStripMenuItem.Name = "promoteToolStripMenuItem";
-            this.promoteToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.promoteToolStripMenuItem.Text = "Promote";
-            this.promoteToolStripMenuItem.Click += new System.EventHandler(this.promoteToolStripMenuItem_Click);
-            // 
-            // demoteToolStripMenuItem
-            // 
-            this.demoteToolStripMenuItem.Image = global::DebateSynergyWordAddIn.Properties.Resources.b;
-            this.demoteToolStripMenuItem.Name = "demoteToolStripMenuItem";
-            this.demoteToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.demoteToolStripMenuItem.Text = "Demote";
-            this.demoteToolStripMenuItem.Click += new System.EventHandler(this.demoteToolStripMenuItem_Click);
-            // 
             // refreshToolStripMenuItem1
             // 
             this.refreshToolStripMenuItem1.Image = global::DebateSynergyWordAddIn.Properties.Resources.refresh;
@@ -199,6 +183,22 @@
             this.refreshToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
             this.refreshToolStripMenuItem1.Text = "Refresh";
             this.refreshToolStripMenuItem1.Click += new System.EventHandler(this.refreshToolStripMenuItem1_Click);
+            // 
+            // promoteToolStripMenuItem
+            // 
+            this.promoteToolStripMenuItem.Image = global::DebateSynergyWordAddIn.Properties.Resources.b;
+            this.promoteToolStripMenuItem.Name = "promoteToolStripMenuItem";
+            this.promoteToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.promoteToolStripMenuItem.Text = "Promote";
+            this.promoteToolStripMenuItem.Click += new System.EventHandler(this.promoteToolStripMenuItem_Click);
+            // 
+            // demoteToolStripMenuItem
+            // 
+            this.demoteToolStripMenuItem.Image = global::DebateSynergyWordAddIn.Properties.Resources.f;
+            this.demoteToolStripMenuItem.Name = "demoteToolStripMenuItem";
+            this.demoteToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.demoteToolStripMenuItem.Text = "Demote";
+            this.demoteToolStripMenuItem.Click += new System.EventHandler(this.demoteToolStripMenuItem_Click);
             // 
             // collapseAllToolStripMenuItem
             // 
@@ -248,7 +248,7 @@
             this.toolsMain.Location = new System.Drawing.Point(3, 0);
             this.toolsMain.Name = "toolsMain";
             this.toolsMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolsMain.Size = new System.Drawing.Size(233, 25);
+            this.toolsMain.Size = new System.Drawing.Size(257, 25);
             this.toolsMain.TabIndex = 1;
             this.toolsMain.Text = "toolStrip2";
             // 
@@ -337,7 +337,6 @@
             this.selectSimilarToolStripMenuItem,
             this.caselistToolStripMenuItem,
             this.removeFormattingToolStripMenuItem,
-            this.toolStripSeparator2,
             this.settingsToolStripMenuItem});
             this.bFormattingMain.Image = global::DebateSynergyWordAddIn.Properties.Resources.d8pastereturns;
             this.bFormattingMain.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -442,13 +441,10 @@
             this.removeFormattingToolStripMenuItem.Text = "Remove Formatting";
             this.removeFormattingToolStripMenuItem.Click += new System.EventHandler(this.removeFormattingToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(176, 6);
-            // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsToolStripMenuItem.Image = global::DebateSynergyWordAddIn.Properties.Resources.settings;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -461,7 +457,8 @@
             this.bSpeechAdd,
             this.sendToSpeechToolStripMenuItem,
             this.bReadSpeech,
-            this.bCopyUSB});
+            this.bCopyUSB,
+            this.timerToolStripMenuItem});
             this.bSpeechMain.Image = global::DebateSynergyWordAddIn.Properties.Resources.d8ssend;
             this.bSpeechMain.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bSpeechMain.Name = "bSpeechMain";
@@ -474,7 +471,7 @@
             this.bSpeechAdd.Image = global::DebateSynergyWordAddIn.Properties.Resources.d8s2ar;
             this.bSpeechAdd.Name = "bSpeechAdd";
             this.bSpeechAdd.Size = new System.Drawing.Size(154, 22);
-            this.bSpeechAdd.Text = "Create speech";
+            this.bSpeechAdd.Text = "New Speech";
             this.bSpeechAdd.Click += new System.EventHandler(this.bSpeechAdd_Click);
             // 
             // sendToSpeechToolStripMenuItem
@@ -500,6 +497,14 @@
             this.bCopyUSB.Size = new System.Drawing.Size(154, 22);
             this.bCopyUSB.Text = "Copy to USB";
             this.bCopyUSB.Click += new System.EventHandler(this.bCopyUSB_Click);
+            // 
+            // timerToolStripMenuItem
+            // 
+            this.timerToolStripMenuItem.Image = global::DebateSynergyWordAddIn.Properties.Resources.d8timerlogo;
+            this.timerToolStripMenuItem.Name = "timerToolStripMenuItem";
+            this.timerToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.timerToolStripMenuItem.Text = "Timer";
+            this.timerToolStripMenuItem.Click += new System.EventHandler(this.timerToolStripMenuItem_Click);
             // 
             // bSwitchWindow
             // 
@@ -568,7 +573,6 @@
         private System.Windows.Forms.ToolStripMenuItem selectSimilarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem caselistToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeFormattingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSplitButton bSpeechMain;
         private System.Windows.Forms.ToolStripMenuItem bSpeechAdd;
@@ -576,7 +580,6 @@
         private System.Windows.Forms.ToolStripMenuItem bReadSpeech;
         private System.Windows.Forms.ToolStripMenuItem bCopyUSB;
         private System.Windows.Forms.ToolStripTextBox bSearchString;
-        private System.Windows.Forms.TreeView treeDoc;
         private System.Windows.Forms.TreeView treeFiles;
         private System.Windows.Forms.ToolStripMenuItem collapseAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
@@ -586,13 +589,15 @@
         public System.Windows.Forms.ToolStripDropDownButton bSwitchWindow;
         private System.Windows.Forms.ToolStripMenuItem promoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem demoteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bCollapseHeading2;
-        private System.Windows.Forms.ToolStripMenuItem bCollapseHeading3;
         private System.Windows.Forms.ToolStripMenuItem collapseToHeading2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseToHeading3ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextTreeFiles;
         private System.Windows.Forms.ToolStripMenuItem openFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseAllToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem timerToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem bCollapseHeading2;
+        public System.Windows.Forms.ToolStripMenuItem bCollapseHeading3;
+        public System.Windows.Forms.TreeView treeDoc;
     }
 }

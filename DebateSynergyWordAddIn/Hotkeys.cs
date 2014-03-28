@@ -40,7 +40,7 @@ namespace DebateSynergyWordAddIn
 
             try
             {
-
+              
                 if (nCode < 0 || Properties.Settings.Default.Hotkeys == false || Globals.ThisAddIn.isSettingsOpen == true)
                 {
                      return (int)CallNextHookEx(_hookID, nCode, wParam, lParam);

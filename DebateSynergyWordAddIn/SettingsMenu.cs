@@ -39,7 +39,7 @@ namespace DebateSynergyWordAddIn
             bTubPath.Text = s.FilesDirectory;
             bSpeechPath.Text = s.SpeechDirectory;
 
-            bOpenWeb.Checked = !s.Enabled;
+            bOpenWeb.Checked = s.Enabled;
             bHotkeys.Checked = s.Hotkeys;
 
             bHeadingLevels.Text = s.HeadingLevels;
@@ -101,7 +101,7 @@ namespace DebateSynergyWordAddIn
 
             s.SpeechDirectory = bSpeechPath.Text;
 
-            s.Enabled = !bOpenWeb.Checked;
+            s.Enabled = bOpenWeb.Checked;
 
             s.HeadingLevels = bHeadingLevels.Text;
             s.Hotkeys = bHotkeys.Checked;

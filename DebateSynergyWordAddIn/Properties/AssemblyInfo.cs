@@ -8,11 +8,11 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DebateSynergyWordAddIn")]
-[assembly: AssemblyDescription("Debate Synergy")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Debate Synergy")]
+[assembly: AssemblyCompany("Alex Gulakov")]
 [assembly: AssemblyProduct("DebateSynergyWordAddIn")]
-[assembly: AssemblyCopyright("Copyright © Alex Gulakov 2014")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

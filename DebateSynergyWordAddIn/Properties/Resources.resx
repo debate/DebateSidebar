@@ -127,9 +127,6 @@
   <data name="d8check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d8check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="d8citereq" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d8citereq.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="d8fclear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d8fclear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,9 +135,6 @@
   </data>
   <data name="d8fhighlite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d8fhighlite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="d8fnormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d8fnormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="d8fsimilar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d8fsimilar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,9 +157,6 @@
   <data name="d8returns" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d8returns.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="d8s1nc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d8s1nc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="d8s2ar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d8s2ar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,6 +169,9 @@
   <data name="d8ssend" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d8ssend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="d8timerlogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\d8timerlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="f" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -186,9 +180,6 @@
   </data>
   <data name="folders" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folders.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="headings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\headings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

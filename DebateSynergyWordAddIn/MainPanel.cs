@@ -30,9 +30,13 @@ namespace DebateSynergyWordAddIn
 
             d = Globals.ThisAddIn.Application.ActiveDocument;
 
-           
+
             if (d.Words.Count < 100000)
+            {
                 populateDoc();
+                Macros.refreshTime = DateTime.Now.Minute*60 + DateTime.Now.Second;
+                Macros.refreshDocLevel = 2;
+            }
 
 
             int hLevels = Convert.ToInt32(Properties.Settings.Default.HeadingLevels);
@@ -461,20 +465,22 @@ namespace DebateSynergyWordAddIn
 
             var rootDirectoryInfo = new DirectoryInfo(tubpath);
 
+            try{
 
-            foreach (DirectoryInfo directory in rootDirectoryInfo.GetDirectories())
-                 treeFiles.Nodes.Add(addNodeTub(directory));
+                foreach (DirectoryInfo directory in rootDirectoryInfo.GetDirectories())
+                    treeFiles.Nodes.Add(addNodeTub(directory));
 
-            TreeNode fileNode = new TreeNode();
-            foreach (FileInfo file in rootDirectoryInfo.GetFiles())
-            {
-                if (file.Name.Contains("~") == false)
-                    fileNode = treeFiles.Nodes.Add(file.Name);
+                TreeNode fileNode = new TreeNode();
+                foreach (FileInfo file in rootDirectoryInfo.GetFiles())
+                {
+                    if (file.Name.Contains("~") == false)
+                        fileNode = treeFiles.Nodes.Add(file.Name);
 
-                fileNode.Tag = file.FullName;
-                fileNode.NodeFont = new System.Drawing.Font(DefaultFont, new FontStyle());
-            }
+                    fileNode.Tag = file.FullName;
+                    fileNode.NodeFont = new System.Drawing.Font(DefaultFont, new FontStyle());
+                }
 
+            } catch (Exception err) { }
 
 
         }
@@ -482,21 +488,28 @@ namespace DebateSynergyWordAddIn
 
         private static TreeNode addNodeTub(DirectoryInfo directoryInfo)
         {
-            TreeNode fileNode = new TreeNode();
-            TreeNode directoryNode = new TreeNode(directoryInfo.Name);
-            directoryNode.Tag = directoryInfo.FullName + "\\";
-            directoryNode.NodeFont = new System.Drawing.Font(DefaultFont, FontStyle.Bold);
-            foreach (DirectoryInfo directory in directoryInfo.GetDirectories())
-                directoryNode.Nodes.Add(addNodeTub(directory));
-            foreach (FileInfo file in directoryInfo.GetFiles())
+            try
             {
-                if (file.Name.Contains("~") == false)
-                    fileNode = directoryNode.Nodes.Add(file.Name);
-                
-                fileNode.Tag = file.FullName;
-                fileNode.NodeFont = new System.Drawing.Font(DefaultFont, new FontStyle());
+                TreeNode fileNode = new TreeNode();
+                TreeNode directoryNode = new TreeNode(directoryInfo.Name);
+                directoryNode.Tag = directoryInfo.FullName + "\\";
+                directoryNode.NodeFont = new System.Drawing.Font(DefaultFont, FontStyle.Bold);
+                foreach (DirectoryInfo directory in directoryInfo.GetDirectories())
+                    directoryNode.Nodes.Add(addNodeTub(directory));
+                foreach (FileInfo file in directoryInfo.GetFiles())
+                {
+                    if (file.Name.Contains("~") == false)
+                        fileNode = directoryNode.Nodes.Add(file.Name);
+
+                    fileNode.Tag = file.FullName;
+                    fileNode.NodeFont = new System.Drawing.Font(DefaultFont, new FontStyle());
+                }
+                return directoryNode;
             }
-            return directoryNode;
+            catch (Exception err)
+            {
+                return new TreeNode();
+            }
         }
 
 
@@ -763,6 +776,21 @@ namespace DebateSynergyWordAddIn
         private void treeDoc_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
         {
             selNode = e.Node;
+        }
+
+        private void timerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string timerPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
+                + "\\Debate Sidebar Word Addin\\DebateTimer.exe";
+
+            if (File.Exists(timerPath))
+                Process.Start(timerPath);
+
+        }
+
+        private void treeFiles_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
 
       
