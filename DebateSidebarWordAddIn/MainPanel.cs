@@ -236,7 +236,7 @@ namespace DebateSidebarWordAddIn
             TreeNode node = new TreeNode();
             string x = a.ActiveDocument.Content.WordOpenXML;
 
-            //super tricky way to regex the document xml for headings paragraphs
+            //regex the document xml for headings paragraphs
             //much faster than looping for each paragraph or using the find function for each heading level
             foreach (Match m in Regex.Matches(x, "w:val=\"Heading(?:(?!</w:p>).)*</w:p>", RegexOptions.Multiline))
             {
