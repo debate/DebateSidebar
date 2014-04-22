@@ -20,11 +20,14 @@ namespace DebateSidebarWordAddIn
             }
             else
             {
+                bTemplateNormal.PerformClick();
+                bTemplateNormal.Checked = true;
                 bTemplatePath.Enabled = false;
                 bTemplateChange.Enabled = false;
             }
 
 
+            bHotkeys.Checked = true;
             bHotkeys.Checked = s.Hotkeys;
             bUnderlineBold.Checked = s.UnderlineBold;
             bMinimizeUnread.Checked = s.MinimizeUnread;
@@ -71,6 +74,19 @@ namespace DebateSidebarWordAddIn
 
         private void bOK_Click(object sender, EventArgs e)
         {
+
+            for (int i = 0; i < Globals.ThisAddIn.CustomTaskPanes.Count; i++)
+                if (Globals.ThisAddIn.CustomTaskPanes[i].Window != null
+                    && Globals.ThisAddIn.CustomTaskPanes[i].Window.Equals(Globals.ThisAddIn.Application.ActiveDocument.ActiveWindow))
+                {
+                    Properties.Settings.Default.PanelWidth = Globals.ThisAddIn.CustomTaskPanes[i].Width;
+                    Properties.Settings.Default.PanelPosition = Globals.ThisAddIn.CustomTaskPanes[i].DockPosition;
+                    break;
+                }
+
+
+          
+
             Globals.ThisAddIn.isSettingsOpen = false;
 
             s.k1 = k1.Text;
@@ -151,8 +167,7 @@ namespace DebateSidebarWordAddIn
             bFontName.Enabled = !bTemplateCustom.Checked;
 
             bFontSize.Enabled = !bTemplateCustom.Checked;
-            labelNormal.Enabled = !bTemplateCustom.Checked;
-
+           
         }
 
 
@@ -183,6 +198,24 @@ namespace DebateSidebarWordAddIn
             Globals.ThisAddIn.isSettingsOpen = true;
 
             ((TextBox) sender).Text = "";
+        }
+
+        private void bHotkeys_CheckedChanged(object sender, EventArgs e)
+        {
+
+            k1.Enabled = bHotkeys.Checked;
+            k2.Enabled = bHotkeys.Checked;
+            k3.Enabled = bHotkeys.Checked;
+            k4.Enabled = bHotkeys.Checked;
+            k5.Enabled = bHotkeys.Checked;
+            k6.Enabled = bHotkeys.Checked;
+            k7.Enabled = bHotkeys.Checked;
+            k8.Enabled = bHotkeys.Checked;
+            k9.Enabled = bHotkeys.Checked;
+            k10.Enabled = bHotkeys.Checked;
+            k11.Enabled = bHotkeys.Checked;
+            k12.Enabled = bHotkeys.Checked;
+
         }
 
      

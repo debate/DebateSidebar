@@ -39,8 +39,6 @@
             this.bTubPath = new System.Windows.Forms.TextBox();
             this.bTubChange = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.labelNormal = new System.Windows.Forms.Label();
-            this.bTemplateCustom = new System.Windows.Forms.CheckBox();
             this.labelLevels = new System.Windows.Forms.Label();
             this.bHeadingLevels = new System.Windows.Forms.ComboBox();
             this.bTemplatePath = new System.Windows.Forms.TextBox();
@@ -76,6 +74,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.bTemplateCustom = new System.Windows.Forms.RadioButton();
+            this.bTemplateNormal = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -256,7 +256,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.labelNormal);
+            this.groupBox3.Controls.Add(this.bTemplateNormal);
             this.groupBox3.Controls.Add(this.bTemplateCustom);
             this.groupBox3.Controls.Add(this.labelLevels);
             this.groupBox3.Controls.Add(this.bHeadingLevels);
@@ -271,28 +271,6 @@
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Styles";
-            // 
-            // labelNormal
-            // 
-            this.labelNormal.AutoSize = true;
-            this.labelNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNormal.Location = new System.Drawing.Point(7, 47);
-            this.labelNormal.Name = "labelNormal";
-            this.labelNormal.Size = new System.Drawing.Size(40, 13);
-            this.labelNormal.TabIndex = 17;
-            this.labelNormal.Text = "Normal";
-            // 
-            // bTemplateCustom
-            // 
-            this.bTemplateCustom.AutoSize = true;
-            this.bTemplateCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bTemplateCustom.Location = new System.Drawing.Point(9, 71);
-            this.bTemplateCustom.Name = "bTemplateCustom";
-            this.bTemplateCustom.Size = new System.Drawing.Size(272, 17);
-            this.bTemplateCustom.TabIndex = 16;
-            this.bTemplateCustom.Text = "Attach custom style template on opening documents";
-            this.bTemplateCustom.UseVisualStyleBackColor = true;
-            this.bTemplateCustom.CheckedChanged += new System.EventHandler(this.bTemplateCustom_CheckedChanged);
             // 
             // labelLevels
             // 
@@ -331,7 +309,7 @@
             // 
             this.bFontName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bFontName.FormattingEnabled = true;
-            this.bFontName.Location = new System.Drawing.Point(52, 44);
+            this.bFontName.Location = new System.Drawing.Point(71, 45);
             this.bFontName.Name = "bFontName";
             this.bFontName.Size = new System.Drawing.Size(95, 21);
             this.bFontName.TabIndex = 13;
@@ -360,7 +338,7 @@
             "12",
             "12.5",
             "13"});
-            this.bFontSize.Location = new System.Drawing.Point(153, 44);
+            this.bFontSize.Location = new System.Drawing.Point(172, 45);
             this.bFontSize.Name = "bFontSize";
             this.bFontSize.Size = new System.Drawing.Size(37, 21);
             this.bFontSize.TabIndex = 12;
@@ -376,6 +354,7 @@
             this.bHotkeys.TabIndex = 6;
             this.bHotkeys.Text = "Enable keyboard shortcuts";
             this.bHotkeys.UseVisualStyleBackColor = true;
+            this.bHotkeys.CheckedChanged += new System.EventHandler(this.bHotkeys_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -693,11 +672,36 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(374, 536);
+            this.label2.Location = new System.Drawing.Point(383, 536);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "March 2014";
+            this.label2.Text = "April 2014";
+            // 
+            // bTemplateCustom
+            // 
+            this.bTemplateCustom.AutoSize = true;
+            this.bTemplateCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bTemplateCustom.Location = new System.Drawing.Point(10, 70);
+            this.bTemplateCustom.Name = "bTemplateCustom";
+            this.bTemplateCustom.Size = new System.Drawing.Size(271, 17);
+            this.bTemplateCustom.TabIndex = 18;
+            this.bTemplateCustom.TabStop = true;
+            this.bTemplateCustom.Text = "Attach custom style template on opening documents";
+            this.bTemplateCustom.UseVisualStyleBackColor = true;
+            this.bTemplateCustom.CheckedChanged += new System.EventHandler(this.bTemplateCustom_CheckedChanged);
+            // 
+            // bTemplateNormal
+            // 
+            this.bTemplateNormal.AutoSize = true;
+            this.bTemplateNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bTemplateNormal.Location = new System.Drawing.Point(10, 47);
+            this.bTemplateNormal.Name = "bTemplateNormal";
+            this.bTemplateNormal.Size = new System.Drawing.Size(59, 17);
+            this.bTemplateNormal.TabIndex = 19;
+            this.bTemplateNormal.TabStop = true;
+            this.bTemplateNormal.Text = "Default";
+            this.bTemplateNormal.UseVisualStyleBackColor = true;
             // 
             // SettingsMenu
             // 
@@ -750,8 +754,6 @@
         private System.Windows.Forms.TextBox bTubPath;
         private System.Windows.Forms.Button bTubChange;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label labelNormal;
-        private System.Windows.Forms.CheckBox bTemplateCustom;
         private System.Windows.Forms.Label labelLevels;
         private System.Windows.Forms.ComboBox bHeadingLevels;
         private System.Windows.Forms.TextBox bTemplatePath;
@@ -789,5 +791,7 @@
         private System.Windows.Forms.CheckBox bUnderlineBold;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.RadioButton bTemplateNormal;
+        private System.Windows.Forms.RadioButton bTemplateCustom;
     }
 }

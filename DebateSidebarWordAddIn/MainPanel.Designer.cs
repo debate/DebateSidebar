@@ -248,7 +248,7 @@
             this.toolsMain.Location = new System.Drawing.Point(3, 0);
             this.toolsMain.Name = "toolsMain";
             this.toolsMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolsMain.Size = new System.Drawing.Size(257, 25);
+            this.toolsMain.Size = new System.Drawing.Size(233, 25);
             this.toolsMain.TabIndex = 1;
             this.toolsMain.Text = "toolStrip2";
             // 
@@ -260,7 +260,7 @@
             this.bFilesShow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bFilesShow.Name = "bFilesShow";
             this.bFilesShow.Size = new System.Drawing.Size(23, 22);
-            this.bFilesShow.Text = "Show / hide Debate Files";
+            this.bFilesShow.Text = "Switch between Document Headings and Debate Files";
             this.bFilesShow.Click += new System.EventHandler(this.bFilesShow_Click);
             // 
             // bRefreshDocMain

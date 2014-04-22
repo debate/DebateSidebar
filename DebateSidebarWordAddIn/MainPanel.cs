@@ -4,12 +4,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Input;
-using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Word;
 using Application = Microsoft.Office.Interop.Word.Application;
 using FontStyle = System.Drawing.FontStyle;
@@ -341,13 +337,10 @@ namespace DebateSidebarWordAddIn
             else
                 treeDoc.CollapseAll();
            
-
             if (treeDoc.TopNode != null)
                 treeDoc.TopNode.EnsureVisible();
 
-
-
-
+            treeDoc.PerformLayout();
         }
 
 
@@ -446,7 +439,7 @@ namespace DebateSidebarWordAddIn
 
             if (Directory.Exists(tubpath) == false)
             {
-                treeFiles.Nodes.Add("Click here to set Debate Files path ").Tag="click";
+                treeFiles.Nodes.Add("Double click to set Debate Files path").Tag="click";
 
                 return;
 
@@ -794,16 +787,6 @@ namespace DebateSidebarWordAddIn
                 Process.Start(timerPath);
 
         }
-
-        private void treeFiles_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
-      
-     
-
-
 
     }
 }

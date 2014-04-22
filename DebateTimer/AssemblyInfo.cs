@@ -10,7 +10,7 @@
 [assembly: System.Runtime.CompilerServices.CompilationRelaxations(8)]
 [assembly: System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)]
 [assembly: System.Reflection.AssemblyTitle("Debate Timer 2.0")]
-[assembly: System.Reflection.AssemblyDescription("Customizable timer for high school and college policy debate rounds, part of the Debate Synergy suite.")]
+[assembly: System.Reflection.AssemblyDescription("Customizable timer for high school and college policy debate rounds.")]
 [assembly: System.Reflection.AssemblyConfiguration("")]
 [assembly: System.Reflection.AssemblyCompany("Alex Gulakov")]
 [assembly: System.Reflection.AssemblyProduct("Debate Timer")]

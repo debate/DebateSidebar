@@ -170,14 +170,8 @@ namespace DebateTimer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon d8timerlogo1 {
-            get {
-                object obj = ResourceManager.GetObject("d8timerlogo1", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+     
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.

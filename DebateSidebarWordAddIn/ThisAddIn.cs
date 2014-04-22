@@ -150,11 +150,20 @@ namespace DebateSidebarWordAddIn
                 CTP.Visible = false;
             else
                 CTP.Visible = true;
+
         }
 
         private void InternalStartup()
         {
             Startup += ThisAddIn_Startup;
+            Shutdown += ThisAddIn_Shutdown;
+        }
+
+        void ThisAddIn_Shutdown(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.Hotkeys)
+                Hotkeys.ReleaseHook();
+
         }
     }
 }

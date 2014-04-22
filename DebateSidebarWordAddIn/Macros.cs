@@ -573,7 +573,7 @@ namespace DebateSidebarWordAddIn
 
         public static void uploadSpeech()
         {
-        	int i;
+            int i;
             if (InternetGetConnectedState(out i, 0) == false)
             {
                 MessageBox.Show("No internet connection");
@@ -640,9 +640,9 @@ namespace DebateSidebarWordAddIn
                 o = o.Replace(m.Value, r);
             }
 
-            string htmlCopy = o.Replace("&", "%26");           
+            string htmlCopy = o.Replace("&", "%26");
 
-            WebRequest request = WebRequest.Create("http://debatesynergy.com/speech.php");
+            WebRequest request = WebRequest.Create("http://debatesynergy.com/speech");
             request.Method = "POST";
             byte[] byteArray = Encoding.UTF8.GetBytes("&data=" + htmlCopy);
             request.ContentType = "application/x-www-form-urlencoded";
