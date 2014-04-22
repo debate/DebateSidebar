@@ -127,14 +127,11 @@
   <data name="_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\100.wav;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\0.wav;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="_300" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\300.wav;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="d8timerlogo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d8timerlogo.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\d8timerlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="beep" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\beep.wav;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -165,8 +162,5 @@
   </data>
   <data name="go11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\go1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="d8timerlogo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d8timerlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
