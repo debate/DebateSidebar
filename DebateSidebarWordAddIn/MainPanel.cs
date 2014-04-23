@@ -113,18 +113,6 @@ namespace DebateSidebarWordAddIn
                 MessageBox.Show(msg);
         }
 
-
-
-        private void underlineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Macros.Underline();
-        }
-
-        private void highlightToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Macros.Highlight();
-        }
-
         private void bPaste_Click(object sender, EventArgs e)
         {
             Macros.PasteUnformatted();
@@ -248,14 +236,10 @@ namespace DebateSidebarWordAddIn
                 //p count
                 string i = (Regex.Matches(x.Substring(0, x.IndexOf(h)), "<w:p( |>)").Count - 1).ToString();
                 
-              
                 string t = "";
                 foreach (Match mt in Regex.Matches(h, "<w:t(>| xml:space=\"preserve\">)(?:(?!</w:t>).)*</w:t>"))
-                {
                     t += mt.ToString().Substring(5, mt.ToString().Length - 11).Replace("xml:space=\"preserve\">", "");
-                }
-
-
+                
                 if (t.Length > 1)
                 {
 
@@ -343,9 +327,8 @@ namespace DebateSidebarWordAddIn
                 treeDoc.CollapseAll();
            
             if (treeDoc.TopNode != null)
-                treeDoc.TopNode.EnsureVisible();
+                treeDoc.Nodes[0].EnsureVisible();
 
-            treeDoc.PerformLayout();
         }
 
 
