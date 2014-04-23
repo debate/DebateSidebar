@@ -244,11 +244,16 @@ namespace DebateSidebarWordAddIn
 
                 int l = h.Contains("Heading1")
                     ? 1 : h.Contains("Heading2") ? 2 : h.Contains("Heading3") ? 3 : 4;
-
+                
+                //p count
                 string i = (Regex.Matches(x.Substring(0, x.IndexOf(h)), "<w:p( |>)").Count - 1).ToString();
+                
+              
                 string t = "";
-                foreach (Match mt in Regex.Matches(h, "<w:t(>|xml:space=\"preserve\">)(?:(?!</w:t>).)*</w:t>"))
-                    t += mt.ToString().Substring(5, mt.ToString().Length - 11);
+                foreach (Match mt in Regex.Matches(h, "<w:t(>| xml:space=\"preserve\">)(?:(?!</w:t>).)*</w:t>"))
+                {
+                    t += mt.ToString().Substring(5, mt.ToString().Length - 11).Replace("xml:space=\"preserve\">", "");
+                }
 
 
                 if (t.Length > 1)
