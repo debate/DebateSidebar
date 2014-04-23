@@ -635,8 +635,8 @@ namespace DebateSidebarWordAddIn
                 r += v.Contains("Background") ? " hilite " : null;
                 r += v.Contains("Bold") ? " bold " : null;
                 r += "\">";
-                r = new Regex(".(3|6)+(2|4|)").Replace(r, "");
-
+                r = new Regex(".[0-9]+").Replace(r, "");
+                Debug.WriteLine(r);
                 o = o.Replace(m.Value, r);
             }
 
