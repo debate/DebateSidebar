@@ -39,6 +39,8 @@
             this.bTubPath = new System.Windows.Forms.TextBox();
             this.bTubChange = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bTemplateNormal = new System.Windows.Forms.RadioButton();
+            this.bTemplateCustom = new System.Windows.Forms.RadioButton();
             this.labelLevels = new System.Windows.Forms.Label();
             this.bHeadingLevels = new System.Windows.Forms.ComboBox();
             this.bTemplatePath = new System.Windows.Forms.TextBox();
@@ -74,8 +76,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.bTemplateCustom = new System.Windows.Forms.RadioButton();
-            this.bTemplateNormal = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -164,9 +164,9 @@
             this.bShowOnlyHeading1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bShowOnlyHeading1.Location = new System.Drawing.Point(6, 55);
             this.bShowOnlyHeading1.Name = "bShowOnlyHeading1";
-            this.bShowOnlyHeading1.Size = new System.Drawing.Size(276, 17);
+            this.bShowOnlyHeading1.Size = new System.Drawing.Size(280, 17);
             this.bShowOnlyHeading1.TabIndex = 15;
-            this.bShowOnlyHeading1.Text = "Navigation Pane will start with all headings expanded";
+            this.bShowOnlyHeading1.Text = "Navigation Pane will open with all headings expanded";
             this.bShowOnlyHeading1.UseVisualStyleBackColor = true;
             // 
             // bOpenWeb
@@ -271,6 +271,31 @@
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Styles";
+            // 
+            // bTemplateNormal
+            // 
+            this.bTemplateNormal.AutoSize = true;
+            this.bTemplateNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bTemplateNormal.Location = new System.Drawing.Point(10, 47);
+            this.bTemplateNormal.Name = "bTemplateNormal";
+            this.bTemplateNormal.Size = new System.Drawing.Size(59, 17);
+            this.bTemplateNormal.TabIndex = 19;
+            this.bTemplateNormal.TabStop = true;
+            this.bTemplateNormal.Text = "Default";
+            this.bTemplateNormal.UseVisualStyleBackColor = true;
+            // 
+            // bTemplateCustom
+            // 
+            this.bTemplateCustom.AutoSize = true;
+            this.bTemplateCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bTemplateCustom.Location = new System.Drawing.Point(10, 70);
+            this.bTemplateCustom.Name = "bTemplateCustom";
+            this.bTemplateCustom.Size = new System.Drawing.Size(271, 17);
+            this.bTemplateCustom.TabIndex = 18;
+            this.bTemplateCustom.TabStop = true;
+            this.bTemplateCustom.Text = "Attach custom style template on opening documents";
+            this.bTemplateCustom.UseVisualStyleBackColor = true;
+            this.bTemplateCustom.CheckedChanged += new System.EventHandler(this.bTemplateCustom_CheckedChanged);
             // 
             // labelLevels
             // 
@@ -677,31 +702,6 @@
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "April 2014";
-            // 
-            // bTemplateCustom
-            // 
-            this.bTemplateCustom.AutoSize = true;
-            this.bTemplateCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bTemplateCustom.Location = new System.Drawing.Point(10, 70);
-            this.bTemplateCustom.Name = "bTemplateCustom";
-            this.bTemplateCustom.Size = new System.Drawing.Size(271, 17);
-            this.bTemplateCustom.TabIndex = 18;
-            this.bTemplateCustom.TabStop = true;
-            this.bTemplateCustom.Text = "Attach custom style template on opening documents";
-            this.bTemplateCustom.UseVisualStyleBackColor = true;
-            this.bTemplateCustom.CheckedChanged += new System.EventHandler(this.bTemplateCustom_CheckedChanged);
-            // 
-            // bTemplateNormal
-            // 
-            this.bTemplateNormal.AutoSize = true;
-            this.bTemplateNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bTemplateNormal.Location = new System.Drawing.Point(10, 47);
-            this.bTemplateNormal.Name = "bTemplateNormal";
-            this.bTemplateNormal.Size = new System.Drawing.Size(59, 17);
-            this.bTemplateNormal.TabIndex = 19;
-            this.bTemplateNormal.TabStop = true;
-            this.bTemplateNormal.Text = "Default";
-            this.bTemplateNormal.UseVisualStyleBackColor = true;
             // 
             // SettingsMenu
             // 
