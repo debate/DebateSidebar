@@ -636,7 +636,6 @@ namespace DebateSidebarWordAddIn
                 r += v.Contains("Bold") ? " bold " : null;
                 r += "\">";
                 r = new Regex(".[0-9]+").Replace(r, "");
-                Debug.WriteLine(r);
                 o = o.Replace(m.Value, r);
             }
 
