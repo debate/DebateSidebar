@@ -72,7 +72,6 @@
             this.Name = "DebateRibbonButton";
             this.RibbonType = "Microsoft.Word.Document";
             this.Tabs.Add(this.tab2);
-            this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.DebateRibbonButton_Load);
             this.tab2.ResumeLayout(false);
             this.tab2.PerformLayout();
             this.groupDebate.ResumeLayout(false);

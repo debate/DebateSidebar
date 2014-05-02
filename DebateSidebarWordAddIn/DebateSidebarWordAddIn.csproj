@@ -183,17 +183,17 @@
     </Compile>
     <Compile Include="Hotkeys.cs" />
     <Compile Include="Macros.cs" />
-    <Compile Include="MainPanel.cs">
+    <Compile Include="Sidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MainPanel.Designer.cs">
-      <DependentUpon>MainPanel.cs</DependentUpon>
+    <Compile Include="Sidebar.Designer.cs">
+      <DependentUpon>Sidebar.cs</DependentUpon>
     </Compile>
-    <Compile Include="MimimizeFont.cs">
+    <Compile Include="MimimizeUnread.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MimimizeFont.Designer.cs">
-      <DependentUpon>MimimizeFont.cs</DependentUpon>
+    <Compile Include="MimimizeUnread.Designer.cs">
+      <DependentUpon>MimimizeUnread.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -201,11 +201,11 @@
     <EmbeddedResource Include="DebateRibbonButton.resx">
       <DependentUpon>DebateRibbonButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainPanel.resx">
-      <DependentUpon>MainPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Sidebar.resx">
+      <DependentUpon>Sidebar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MimimizeFont.resx">
-      <DependentUpon>MimimizeFont.cs</DependentUpon>
+    <EmbeddedResource Include="MimimizeUnread.resx">
+      <DependentUpon>MimimizeUnread.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -217,12 +217,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SettingsMenu.resx">
-      <DependentUpon>SettingsMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SpeechAdd.resx">
-      <DependentUpon>SpeechAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Speech.resx">
+      <DependentUpon>Speech.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="LICENSE">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -233,17 +236,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="SettingsMenu.cs">
+    <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingsMenu.Designer.cs">
-      <DependentUpon>SettingsMenu.cs</DependentUpon>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpeechAdd.cs">
+    <Compile Include="Speech.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SpeechAdd.Designer.cs">
-      <DependentUpon>SpeechAdd.cs</DependentUpon>
+    <Compile Include="Speech.Designer.cs">
+      <DependentUpon>Speech.cs</DependentUpon>
     </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>

@@ -71,7 +71,7 @@ namespace DebateTimer
         internal ToolStripMenuItem r500;
         private ToolStripMenuItem Start;
         private int sysT = DateTime.Now.Second;
-        private Timer timerTick;
+        private Timer timeTick;
         internal ToolStripMenuItem x000;
         internal ToolStripMenuItem x030;
         internal ToolStripMenuItem x100;
@@ -175,7 +175,7 @@ namespace DebateTimer
 
         private void Disp_MouseDown(object sender, MouseEventArgs e)
         {
-            if (this.timerTick.Enabled)
+            if (this.timeTick.Enabled)
             {
                 this.StartClick();
             }
@@ -225,7 +225,6 @@ namespace DebateTimer
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimerWin));
             this.Menubar = new System.Windows.Forms.MenuStrip();
             this.Config = new System.Windows.Forms.ToolStripMenuItem();
@@ -287,7 +286,6 @@ namespace DebateTimer
             this.NegPReset = new System.Windows.Forms.ToolStripMenuItem();
             this.AffPMinus = new System.Windows.Forms.ToolStripMenuItem();
             this.AffPReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.timerTick = new System.Windows.Forms.Timer(this.components);
             this.Disp = new System.Windows.Forms.TextBox();
             this.Menubar.SuspendLayout();
             this.SuspendLayout();
@@ -810,10 +808,6 @@ namespace DebateTimer
             this.AffPReset.Size = new System.Drawing.Size(148, 22);
             this.AffPReset.Text = "Reset Aff Prep";
             // 
-            // timerTick
-            // 
-            this.timerTick.Tick += new System.EventHandler(this.timerTick_Tick);
-            // 
             // Disp
             // 
             this.Disp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(194)))), ((int)(((byte)(238)))));
@@ -931,7 +925,7 @@ namespace DebateTimer
 
         private void oTU_Click(object sender, EventArgs e)
         {
-            if (this.oTU.Checked & !this.timerTick.Enabled)
+            if (this.oTU.Checked & !this.timeTick.Enabled)
             {
                 this.Disp.Text = "0:00";
             }
@@ -986,11 +980,11 @@ namespace DebateTimer
 
         private void StartClick()
         {
-            if (this.timerTick.Enabled)
+            if (this.timeTick.Enabled)
             {
                 this.Disp.BackColor = this.BackColor;
                 base.Activate();
-                this.timerTick.Stop();
+                this.timeTick.Stop();
                 this.Start.Image = Resources.go1;
             }
             else
@@ -1002,7 +996,7 @@ namespace DebateTimer
                 }
                 this.Disp.Text = this.convertInput();
                 this.sysT = DateTime.Now.Second;
-                this.timerTick.Start();
+                this.timeTick.Start();
                 this.Start.Image = Resources.go2;
             }
         }
@@ -1017,7 +1011,7 @@ namespace DebateTimer
             this.Start.HideDropDown();
         }
 
-        private void timerTick_Tick(object sender, EventArgs e)
+        private void timeTick_Tick(object sender, EventArgs e)
         {
             if (this.sysT != DateTime.Now.Second)
             {
@@ -1106,7 +1100,7 @@ namespace DebateTimer
                         new SoundPlayer(Resources.beep_final).Play();
                     }
                     base.Activate();
-                    this.timerTick.Stop();
+                    this.timeTick.Stop();
                     this.Start.Image = Resources.go1;
                     string str2 = str;
                     if (str2 != null)
@@ -1245,7 +1239,7 @@ namespace DebateTimer
 
         private void TimeSet(string timeSet, string name)
         {
-            if (this.timerTick.Enabled)
+            if (this.timeTick.Enabled)
             {
                 this.StartClick();
             }

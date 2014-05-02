@@ -1,9 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
-using DebateSidebarWordAddIn;
 using Microsoft.Office.Interop.Word;
 using Microsoft.Office.Tools;
-using Document = Microsoft.Office.Interop.Word.Document;
 using Office = Microsoft.Office.Core;
 
 namespace DebateSidebarWordAddIn
@@ -11,34 +10,35 @@ namespace DebateSidebarWordAddIn
     public partial class ThisAddIn
     {
         //public objects
-        public Document speechDoc;
         public bool isSettingsOpen = false;
+        public Document speechDoc;
 
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-           
-            //add to openings
-            Application.DocumentOpen += Application_DocumentOpen;
-            ((ApplicationEvents4_Event)this.Application).NewDocument += Application_NewDocument;
-
-            //add to first doc
-            if (Globals.ThisAddIn.Application.Documents.Count > 0 && Properties.Settings.Default.Enabled)
+            try
             {
-                Globals.ThisAddIn.Application.ActiveWindow.View.Type = WdViewType.wdWebView;
-                addTemplate(Globals.ThisAddIn.Application.ActiveDocument);
-                addTaskbar();
+                //add to openings
+                Application.DocumentOpen += Application_DocumentOpen;
+                ((ApplicationEvents4_Event) Application).NewDocument += Application_NewDocument;
 
-            };
+                //add to first doc
+                if (Globals.ThisAddIn.Application.Documents.Count > 0 && Properties.Settings.Default.Enabled)
+                {
 
-            //keyboard hooks
-            if (Properties.Settings.Default.Hotkeys)
-                Hotkeys.SetHook();
+                    Globals.ThisAddIn.Application.ActiveWindow.WindowState = WdWindowState.wdWindowStateMaximize;
+                    Globals.ThisAddIn.Application.ActiveWindow.View.Type = WdViewType.wdWebView;
+                    addTemplate(Globals.ThisAddIn.Application.ActiveDocument);
+                    addTaskbar();
+                }
 
+                //keyboard hooks
+                if (Properties.Settings.Default.Hotkeys)
+                    Hotkeys.SetHook();
 
-            Globals.ThisAddIn.Application.ActiveWindow.WindowState = WdWindowState.wdWindowStateMaximize;
+            }
+            catch (Exception err) { }
 
         }
-
 
         private void Application_NewDocument(Document document)
         {
@@ -48,7 +48,7 @@ namespace DebateSidebarWordAddIn
                 return;
 
             if (CustomTaskPanes.Count > 0)
-                for (int i = 0; i < this.CustomTaskPanes.Count; i++)
+                for (int i = 0; i < CustomTaskPanes.Count; i++)
                     if (CustomTaskPanes[i].Window.Equals(document.ActiveWindow))
                         return;
 
@@ -81,31 +81,30 @@ namespace DebateSidebarWordAddIn
 
         public void addTemplate(Document document)
         {
-
             Properties.Settings s = Properties.Settings.Default;
             Globals.ThisAddIn.Application.ActiveWindow.View.Type = WdViewType.wdWebView;
 
+
             if (s.OpenTemplate.Length > 0)
             {
+               
                 Globals.ThisAddIn.Application.ActiveDocument.set_AttachedTemplate(s.OpenTemplate);
-
                 Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(s.OpenTemplate);
-
-
             }
             else
             {
+               
                 Document d = Globals.ThisAddIn.Application.ActiveDocument;
 
 
-                if ( d.Styles["Normal"].Font.Name == s.FontName &&
-                     d.Styles["Normal"].Font.Size == Convert.ToInt32(s.FontSize)) return;
-
+                if (d.Styles["Normal"].Font.Name == s.FontName &&
+                    d.Styles["Normal"].Font.Size == Convert.ToInt32(s.FontSize))
+                    return;
 
 
                 d.Styles["Normal"].Font.Name = s.FontName;
                 d.Styles["Normal"].Font.Size = Convert.ToInt32(s.FontSize);
-               // d.Styles["Heading 1"].NameLocal = "Pocket";
+                // d.Styles["Heading 1"].NameLocal = "Pocket";
                 d.Styles["Heading 1"].Font.Size = Convert.ToInt32(s.FontSize) + 9;
                 d.Styles["Heading 1"].Font.Name = s.FontName;
                 d.Styles["Heading 1"].Font.Underline = WdUnderline.wdUnderlineSingle;
@@ -135,7 +134,6 @@ namespace DebateSidebarWordAddIn
                 d.Styles["Heading 4"].Font.Name = s.FontName;
                 d.Styles["Heading 4"].Font.Bold = 1;
                 d.Styles["Heading 4"].Font.Color = WdColor.wdColorBlack;
-
             }
         }
 
@@ -143,22 +141,34 @@ namespace DebateSidebarWordAddIn
         {
             Globals.ThisAddIn.Application.ActiveWindow.DocumentMap = false;
 
-            CustomTaskPane CTP = this.CustomTaskPanes.Add(new MainPanel(), " ");
+            CustomTaskPane CTP = CustomTaskPanes.Add(new Sidebar(), " ");
             CTP.Width = Properties.Settings.Default.PanelWidth;
             CTP.DockPosition = Properties.Settings.Default.PanelPosition;
+
+            CTP.DockPositionChanged += CTP_DockPositionChanged;
+
             if (Globals.ThisAddIn.Application.ActiveDocument.ActiveWindow.Caption.Contains("Speech"))
                 CTP.Visible = false;
             else
                 CTP.Visible = true;
+        }
 
+        private void CTP_DockPositionChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.PanelWidth = ((CustomTaskPane) sender).Width;
+            Properties.Settings.Default.PanelPosition = ((CustomTaskPane) sender).DockPosition;
+            Properties.Settings.Default.Save();
         }
 
         private void InternalStartup()
         {
             Startup += ThisAddIn_Startup;
+            Shutdown += ThisAddIn_Shutdown;
         }
 
-     
+        private void ThisAddIn_Shutdown(object sender, EventArgs e)
+        {
+            Hotkeys.ReleaseHook();
+        }
     }
 }
-
