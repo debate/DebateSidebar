@@ -579,13 +579,13 @@ public static void UploadSpeech()
     int formatIndex = 0;
     int formatTotal = new Regex("<(Span|Paragraph)[^>]+>").Matches(o).Count;
 
-    Globals.ThisAddIn.Application.ScreenUpdating = false;
     foreach (Match m in new Regex("<(Span|Paragraph)[^>]+>").Matches(o))
     {
         formatIndex++;
         Globals.ThisAddIn.Application.StatusBar = "                                " 
             + Math.Floor((double)(100 * formatIndex / formatTotal)).ToString() + "% Converted";
-
+        System.Windows.Forms.Application.DoEvents();
+       
 
         string v = m.Value;
         string r = "<span style=\"";
@@ -619,7 +619,6 @@ public static void UploadSpeech()
     }
 
 
-    Globals.ThisAddIn.Application.ScreenUpdating = true;
     Globals.ThisAddIn.Application.StatusBar = "Uploading";
     string htmlCopy = o.Replace("&", "%26");
 
