@@ -35,19 +35,19 @@
         private void InitializeComponent()
         {
             Microsoft.Office.Tools.Ribbon.RibbonDialogLauncher ribbonDialogLauncherImpl1 = this.Factory.CreateRibbonDialogLauncher();
-            this.tab2 = this.Factory.CreateRibbonTab();
+            this.tab1 = this.Factory.CreateRibbonTab();
             this.groupDebate = this.Factory.CreateRibbonGroup();
             this.bDebatePanelSwitch = this.Factory.CreateRibbonButton();
-            this.tab2.SuspendLayout();
+            this.tab1.SuspendLayout();
             this.groupDebate.SuspendLayout();
             // 
-            // tab2
+            // tab1
             // 
-            this.tab2.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.tab2.ControlId.OfficeId = "TabHome";
-            this.tab2.Groups.Add(this.groupDebate);
-            this.tab2.Label = "TabHome";
-            this.tab2.Name = "tab2";
+            this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.tab1.ControlId.OfficeId = "TabHome";
+            this.tab1.Groups.Add(this.groupDebate);
+            this.tab1.Label = "TabHome";
+            this.tab1.Name = "tab1";
             // 
             // groupDebate
             // 
@@ -56,7 +56,7 @@
             this.groupDebate.Label = "Debate";
             this.groupDebate.Name = "groupDebate";
             this.groupDebate.Position = this.Factory.RibbonPosition.BeforeOfficeId("GroupClipboard");
-            this.groupDebate.DialogLauncherClick += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.groupDebate_DialogLauncherClick_1);
+            this.groupDebate.DialogLauncherClick += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.groupDebate_DialogLauncherClick);
             // 
             // bDebatePanelSwitch
             // 
@@ -67,13 +67,13 @@
             this.bDebatePanelSwitch.ShowImage = true;
             this.bDebatePanelSwitch.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.bDebatePanelSwitch_Click);
             // 
-            // DebateRibbonButton
+            // RibbonButton
             // 
-            this.Name = "DebateRibbonButton";
+            this.Name = "RibbonButton";
             this.RibbonType = "Microsoft.Word.Document";
-            this.Tabs.Add(this.tab2);
-            this.tab2.ResumeLayout(false);
-            this.tab2.PerformLayout();
+            this.Tabs.Add(this.tab1);
+            this.tab1.ResumeLayout(false);
+            this.tab1.PerformLayout();
             this.groupDebate.ResumeLayout(false);
             this.groupDebate.PerformLayout();
 
@@ -81,15 +81,14 @@
 
         #endregion
 
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab tab2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupDebate;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton bDebatePanelSwitch;
-
     }
 
     partial class ThisRibbonCollection
     {
-        internal DebateRibbonButton DebateRibbonButton
+        internal DebateRibbonButton RibbonButton
         {
             get { return this.GetRibbon<DebateRibbonButton>(); }
         }

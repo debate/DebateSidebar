@@ -35,7 +35,7 @@
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
     <ApplicationVersion>2.0.0.0</ApplicationVersion>
-    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
+    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
@@ -136,11 +136,13 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -175,25 +177,19 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Hotkeys.cs" />
+    <Compile Include="Macros.cs" />
     <Compile Include="DebateRibbonButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DebateRibbonButton.Designer.cs">
       <DependentUpon>DebateRibbonButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hotkeys.cs" />
-    <Compile Include="Macros.cs" />
     <Compile Include="Sidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Sidebar.Designer.cs">
       <DependentUpon>Sidebar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MimimizeUnread.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MimimizeUnread.Designer.cs">
-      <DependentUpon>MimimizeUnread.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -203,9 +199,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sidebar.resx">
       <DependentUpon>Sidebar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MimimizeUnread.resx">
-      <DependentUpon>MimimizeUnread.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -220,12 +213,9 @@
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Speech.resx">
-      <DependentUpon>Speech.cs</DependentUpon>
+    <EmbeddedResource Include="ManageSpeech.resx">
+      <DependentUpon>ManageSpeech.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="LICENSE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -242,11 +232,11 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Speech.cs">
+    <Compile Include="ManageSpeech.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Speech.Designer.cs">
-      <DependentUpon>Speech.cs</DependentUpon>
+    <Compile Include="ManageSpeech.Designer.cs">
+      <DependentUpon>ManageSpeech.cs</DependentUpon>
     </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>

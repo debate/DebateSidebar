@@ -1,7 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
-              GeneratedClassNamespace="DebateSidebarWordAddIn.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DebateSidebarWordAddIn.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Enabled" Type="System.Boolean" Scope="User">
@@ -22,7 +20,7 @@
     <Setting Name="OpenTemplate" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ShowHeading1" Type="System.Boolean" Scope="User">
+    <Setting Name="ExpandHeadings" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="HeadingLevels" Type="System.String" Scope="User">
@@ -87,6 +85,12 @@
     </Setting>
     <Setting Name="UnderlineBold" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BoxHeading1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="TimerPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

@@ -38,10 +38,6 @@ namespace DebateTimer
         internal MenuStrip Menubar;
         internal ToolStripMenuItem mPrep;
         internal ToolStripMenuItem mRebu;
-        internal ToolStripSeparator mSep1;
-        internal ToolStripSeparator mSep2;
-        private ToolStripSeparator mSep3;
-        private ToolStripSeparator mSep4;
         private ToolStripMenuItem NegP;
         internal ToolStripMenuItem NegPMinus;
         internal ToolStripMenuItem NegPReset;
@@ -49,7 +45,6 @@ namespace DebateTimer
         internal ToolStripMenuItem oAV;
         internal ToolStripMenuItem oDefaults;
         internal ToolStripMenuItem oReset;
-        private ToolStripMenuItem oTop;
         internal ToolStripMenuItem oTran;
         internal ToolStripMenuItem oTU;
         internal ToolStripMenuItem p000;
@@ -71,7 +66,7 @@ namespace DebateTimer
         internal ToolStripMenuItem r500;
         private ToolStripMenuItem Start;
         private int sysT = DateTime.Now.Second;
-        private Timer timeTick;
+        private Timer timerTick;
         internal ToolStripMenuItem x000;
         internal ToolStripMenuItem x030;
         internal ToolStripMenuItem x100;
@@ -81,17 +76,17 @@ namespace DebateTimer
 
         public TimerWin()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void AffP_Click(object sender, EventArgs e)
         {
-            this.TimeSet(this.AffP.Text, "Aff Prep");
+            TimeSet(AffP.Text, "Aff Prep");
         }
 
         private void bC_Click(object sender, EventArgs e)
         {
-            this.TimeSet(this.bC.Text, "Constructive");
+            TimeSet(bC.Text, "Constructive");
         }
 
         private void BeepAlert()
@@ -106,84 +101,84 @@ namespace DebateTimer
 
         private void bR_Click(object sender, EventArgs e)
         {
-            this.TimeSet(this.bR.Text, "Rebuttal");
+            TimeSet(bR.Text, "Rebuttal");
         }
 
         private void bX_Click(object sender, EventArgs e)
         {
-            this.TimeSet(this.bX.Text, "Cross-x");
+            TimeSet(bX.Text, "Cross-x");
         }
 
         private void Config_Click(object sender, EventArgs e)
         {
-            this.oTran.Checked = !this.oTran.Checked;
+            oTran.Checked = !oTran.Checked;
         }
 
         private void Config_MouseEnter(object sender, EventArgs e)
         {
-            this.Config.ShowDropDown();
-            this.Config.DropDown.MouseLeave += new EventHandler(this.ConfigDropDownMouseLeave);
-            this.mCons.DropDown.Opening += new CancelEventHandler(this.ConfigDropDownMouseLeaveRemoveEvent);
-            this.mCros.DropDown.Opening += new CancelEventHandler(this.ConfigDropDownMouseLeaveRemoveEvent);
-            this.mRebu.DropDown.Opening += new CancelEventHandler(this.ConfigDropDownMouseLeaveRemoveEvent);
-            this.mPrep.DropDown.Opening += new CancelEventHandler(this.ConfigDropDownMouseLeaveRemoveEvent);
+            Config.ShowDropDown();
+            Config.DropDown.MouseLeave += new EventHandler(ConfigDropDownMouseLeave);
+            mCons.DropDown.Opening += new CancelEventHandler(ConfigDropDownMouseLeaveRemoveEvent);
+            mCros.DropDown.Opening += new CancelEventHandler(ConfigDropDownMouseLeaveRemoveEvent);
+            mRebu.DropDown.Opening += new CancelEventHandler(ConfigDropDownMouseLeaveRemoveEvent);
+            mPrep.DropDown.Opening += new CancelEventHandler(ConfigDropDownMouseLeaveRemoveEvent);
         }
 
         private void ConfigDropDownMouseLeave(object sender, EventArgs e)
         {
-            this.Config.HideDropDown();
+            Config.HideDropDown();
         }
 
         private void ConfigDropDownMouseLeaveRemoveEvent(object sender, EventArgs e)
         {
-            this.Config.DropDown.MouseLeave -= new EventHandler(this.ConfigDropDownMouseLeave);
+            Config.DropDown.MouseLeave -= new EventHandler(ConfigDropDownMouseLeave);
         }
 
         private string convertInput()
         {
-            string text = this.Disp.Text;
+            string text = Disp.Text;
             int num = 0;
             int length = text.Length;
             int index = text.IndexOf(":");
             if (index > 0)
             {
-                num = (this.val(text.Substring(0, index)) * 60) + this.val(text.Substring((length - index) - 1));
+                num = (val(text.Substring(0, index)) * 60) + val(text.Substring((length - index) - 1));
             }
             else if (length < 2)
             {
-                num = this.val(text) * 60;
+                num = val(text) * 60;
             }
             else if (length == 2)
             {
-                num = this.val(text);
+                num = val(text);
             }
             else if (length > 2)
             {
-                num = (this.val(text.Substring(0, length - 2)) * 60) + this.val(text.Substring(length - 2));
+                num = (val(text.Substring(0, length - 2)) * 60) + val(text.Substring(length - 2));
             }
             num = Math.Min(0x1734, num);
-            return this.i2s(num);
+            return i2s(num);
         }
 
         private void Disp_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 13)
             {
-                this.StartClick();
+                StartClick();
             }
         }
 
         private void Disp_MouseDown(object sender, MouseEventArgs e)
         {
-            if (this.timeTick.Enabled)
+            if (timerTick.Enabled)
             {
-                this.StartClick();
+                StartClick();
             }
         }
 
         private void Disp_TextChanged(object sender, EventArgs e)
         {
-            string text = this.Disp.Text;
+            string text = Disp.Text;
             for (int i = 0; i < text.Length; i++)
             {
                 char ch = text[i];
@@ -192,21 +187,21 @@ namespace DebateTimer
                     text.Remove(i, 1);
                 }
             }
-            if (this.Text == "Aff Prep")
+            if (Text == "Aff Prep")
             {
-                this.AffP.Text = this.convertInput();
+                AffP.Text = convertInput();
             }
-            else if (this.Text == "Neg Prep")
+            else if (Text == "Neg Prep")
             {
-                this.NegP.Text = this.convertInput();
+                NegP.Text = convertInput();
             }
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing & (this.components != null))
+            if (disposing & (components != null))
             {
-                this.components.Dispose();
+                components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -225,12 +220,11 @@ namespace DebateTimer
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimerWin));
             this.Menubar = new System.Windows.Forms.MenuStrip();
             this.Config = new System.Windows.Forms.ToolStripMenuItem();
             this.oTran = new System.Windows.Forms.ToolStripMenuItem();
-            this.oTop = new System.Windows.Forms.ToolStripMenuItem();
-            this.mSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mPrep = new System.Windows.Forms.ToolStripMenuItem();
             this.p600 = new System.Windows.Forms.ToolStripMenuItem();
             this.p500 = new System.Windows.Forms.ToolStripMenuItem();
@@ -268,18 +262,15 @@ namespace DebateTimer
             this.x000 = new System.Windows.Forms.ToolStripMenuItem();
             this.oAB = new System.Windows.Forms.ToolStripMenuItem();
             this.oAV = new System.Windows.Forms.ToolStripMenuItem();
-            this.mSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.bExit = new System.Windows.Forms.ToolStripMenuItem();
             this.Start = new System.Windows.Forms.ToolStripMenuItem();
             this.bS = new System.Windows.Forms.ToolStripMenuItem();
             this.bC = new System.Windows.Forms.ToolStripMenuItem();
             this.bR = new System.Windows.Forms.ToolStripMenuItem();
             this.bX = new System.Windows.Forms.ToolStripMenuItem();
-            this.mSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.AffP = new System.Windows.Forms.ToolStripMenuItem();
             this.NegP = new System.Windows.Forms.ToolStripMenuItem();
             this.oReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.mSep4 = new System.Windows.Forms.ToolStripSeparator();
             this.oDefaults = new System.Windows.Forms.ToolStripMenuItem();
             this.oTU = new System.Windows.Forms.ToolStripMenuItem();
             this.NegPMinus = new System.Windows.Forms.ToolStripMenuItem();
@@ -287,6 +278,7 @@ namespace DebateTimer
             this.AffPMinus = new System.Windows.Forms.ToolStripMenuItem();
             this.AffPReset = new System.Windows.Forms.ToolStripMenuItem();
             this.Disp = new System.Windows.Forms.TextBox();
+            this.timerTick = new System.Windows.Forms.Timer(this.components);
             this.Menubar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -312,15 +304,12 @@ namespace DebateTimer
             this.Config.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.Config.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.oTran,
-            this.oTop,
-            this.mSep1,
             this.mPrep,
             this.mCons,
             this.mRebu,
             this.mCros,
             this.oAB,
             this.oAV,
-            this.mSep2,
             this.bExit});
             this.Config.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config.Image = ((System.Drawing.Image)(resources.GetObject("Config.Image")));
@@ -333,27 +322,17 @@ namespace DebateTimer
             // 
             // oTran
             // 
+            this.oTran.BackColor = System.Drawing.Color.White;
             this.oTran.CheckOnClick = true;
+            this.oTran.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.oTran.Name = "oTran";
-            this.oTran.Size = new System.Drawing.Size(162, 22);
+            this.oTran.Size = new System.Drawing.Size(152, 22);
             this.oTran.Text = "Transparent";
             this.oTran.CheckedChanged += new System.EventHandler(this.oTran_CheckedChanged);
             // 
-            // oTop
-            // 
-            this.oTop.CheckOnClick = true;
-            this.oTop.Name = "oTop";
-            this.oTop.Size = new System.Drawing.Size(162, 22);
-            this.oTop.Text = "Always On Top";
-            this.oTop.CheckedChanged += new System.EventHandler(this.oTop_CheckedChanged);
-            // 
-            // mSep1
-            // 
-            this.mSep1.Name = "mSep1";
-            this.mSep1.Size = new System.Drawing.Size(159, 6);
-            // 
             // mPrep
             // 
+            this.mPrep.BackColor = System.Drawing.Color.White;
             this.mPrep.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.mPrep.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.p600,
@@ -366,11 +345,12 @@ namespace DebateTimer
             this.p030,
             this.p000});
             this.mPrep.Name = "mPrep";
-            this.mPrep.Size = new System.Drawing.Size(162, 22);
+            this.mPrep.Size = new System.Drawing.Size(152, 22);
             this.mPrep.Text = "Prep Times";
             // 
             // p600
             // 
+            this.p600.BackColor = System.Drawing.Color.White;
             this.p600.CheckOnClick = true;
             this.p600.Name = "p600";
             this.p600.Size = new System.Drawing.Size(102, 22);
@@ -378,6 +358,7 @@ namespace DebateTimer
             // 
             // p500
             // 
+            this.p500.BackColor = System.Drawing.Color.White;
             this.p500.Checked = true;
             this.p500.CheckOnClick = true;
             this.p500.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -387,6 +368,7 @@ namespace DebateTimer
             // 
             // p400
             // 
+            this.p400.BackColor = System.Drawing.Color.White;
             this.p400.CheckOnClick = true;
             this.p400.Name = "p400";
             this.p400.Size = new System.Drawing.Size(102, 22);
@@ -394,6 +376,7 @@ namespace DebateTimer
             // 
             // p300
             // 
+            this.p300.BackColor = System.Drawing.Color.White;
             this.p300.Checked = true;
             this.p300.CheckOnClick = true;
             this.p300.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -403,6 +386,7 @@ namespace DebateTimer
             // 
             // p200
             // 
+            this.p200.BackColor = System.Drawing.Color.White;
             this.p200.CheckOnClick = true;
             this.p200.Name = "p200";
             this.p200.Size = new System.Drawing.Size(102, 22);
@@ -410,6 +394,7 @@ namespace DebateTimer
             // 
             // p130
             // 
+            this.p130.BackColor = System.Drawing.Color.White;
             this.p130.CheckOnClick = true;
             this.p130.Name = "p130";
             this.p130.Size = new System.Drawing.Size(102, 22);
@@ -417,6 +402,7 @@ namespace DebateTimer
             // 
             // p100
             // 
+            this.p100.BackColor = System.Drawing.Color.White;
             this.p100.Checked = true;
             this.p100.CheckOnClick = true;
             this.p100.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -426,6 +412,7 @@ namespace DebateTimer
             // 
             // p030
             // 
+            this.p030.BackColor = System.Drawing.Color.White;
             this.p030.CheckOnClick = true;
             this.p030.Name = "p030";
             this.p030.Size = new System.Drawing.Size(102, 22);
@@ -433,6 +420,7 @@ namespace DebateTimer
             // 
             // p000
             // 
+            this.p000.BackColor = System.Drawing.Color.White;
             this.p000.Checked = true;
             this.p000.CheckOnClick = true;
             this.p000.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -442,6 +430,8 @@ namespace DebateTimer
             // 
             // mCons
             // 
+            this.mCons.BackColor = System.Drawing.Color.White;
+            this.mCons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.mCons.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.c600,
             this.c500,
@@ -453,11 +443,12 @@ namespace DebateTimer
             this.c030,
             this.c000});
             this.mCons.Name = "mCons";
-            this.mCons.Size = new System.Drawing.Size(162, 22);
+            this.mCons.Size = new System.Drawing.Size(152, 22);
             this.mCons.Text = "Constructives";
             // 
             // c600
             // 
+            this.c600.BackColor = System.Drawing.Color.White;
             this.c600.CheckOnClick = true;
             this.c600.Name = "c600";
             this.c600.Size = new System.Drawing.Size(102, 22);
@@ -465,6 +456,7 @@ namespace DebateTimer
             // 
             // c500
             // 
+            this.c500.BackColor = System.Drawing.Color.White;
             this.c500.Checked = true;
             this.c500.CheckOnClick = true;
             this.c500.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -474,6 +466,7 @@ namespace DebateTimer
             // 
             // c400
             // 
+            this.c400.BackColor = System.Drawing.Color.White;
             this.c400.CheckOnClick = true;
             this.c400.Name = "c400";
             this.c400.Size = new System.Drawing.Size(102, 22);
@@ -481,6 +474,7 @@ namespace DebateTimer
             // 
             // c300
             // 
+            this.c300.BackColor = System.Drawing.Color.White;
             this.c300.CheckOnClick = true;
             this.c300.Name = "c300";
             this.c300.Size = new System.Drawing.Size(102, 22);
@@ -488,6 +482,7 @@ namespace DebateTimer
             // 
             // c200
             // 
+            this.c200.BackColor = System.Drawing.Color.White;
             this.c200.CheckOnClick = true;
             this.c200.Name = "c200";
             this.c200.Size = new System.Drawing.Size(102, 22);
@@ -495,6 +490,7 @@ namespace DebateTimer
             // 
             // c130
             // 
+            this.c130.BackColor = System.Drawing.Color.White;
             this.c130.CheckOnClick = true;
             this.c130.Name = "c130";
             this.c130.Size = new System.Drawing.Size(102, 22);
@@ -502,6 +498,7 @@ namespace DebateTimer
             // 
             // c100
             // 
+            this.c100.BackColor = System.Drawing.Color.White;
             this.c100.Checked = true;
             this.c100.CheckOnClick = true;
             this.c100.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -511,6 +508,7 @@ namespace DebateTimer
             // 
             // c030
             // 
+            this.c030.BackColor = System.Drawing.Color.White;
             this.c030.CheckOnClick = true;
             this.c030.Name = "c030";
             this.c030.Size = new System.Drawing.Size(102, 22);
@@ -518,6 +516,7 @@ namespace DebateTimer
             // 
             // c000
             // 
+            this.c000.BackColor = System.Drawing.Color.White;
             this.c000.Checked = true;
             this.c000.CheckOnClick = true;
             this.c000.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -527,6 +526,8 @@ namespace DebateTimer
             // 
             // mRebu
             // 
+            this.mRebu.BackColor = System.Drawing.Color.White;
+            this.mRebu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.mRebu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.r500,
             this.r400,
@@ -537,11 +538,12 @@ namespace DebateTimer
             this.r030,
             this.r000});
             this.mRebu.Name = "mRebu";
-            this.mRebu.Size = new System.Drawing.Size(162, 22);
+            this.mRebu.Size = new System.Drawing.Size(152, 22);
             this.mRebu.Text = "Rebuttals";
             // 
             // r500
             // 
+            this.r500.BackColor = System.Drawing.Color.White;
             this.r500.CheckOnClick = true;
             this.r500.Name = "r500";
             this.r500.Size = new System.Drawing.Size(102, 22);
@@ -549,6 +551,7 @@ namespace DebateTimer
             // 
             // r400
             // 
+            this.r400.BackColor = System.Drawing.Color.White;
             this.r400.CheckOnClick = true;
             this.r400.Name = "r400";
             this.r400.Size = new System.Drawing.Size(102, 22);
@@ -556,6 +559,7 @@ namespace DebateTimer
             // 
             // r300
             // 
+            this.r300.BackColor = System.Drawing.Color.White;
             this.r300.Checked = true;
             this.r300.CheckOnClick = true;
             this.r300.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -565,6 +569,7 @@ namespace DebateTimer
             // 
             // r200
             // 
+            this.r200.BackColor = System.Drawing.Color.White;
             this.r200.CheckOnClick = true;
             this.r200.Name = "r200";
             this.r200.Size = new System.Drawing.Size(102, 22);
@@ -572,6 +577,7 @@ namespace DebateTimer
             // 
             // r130
             // 
+            this.r130.BackColor = System.Drawing.Color.White;
             this.r130.CheckOnClick = true;
             this.r130.Name = "r130";
             this.r130.Size = new System.Drawing.Size(102, 22);
@@ -579,6 +585,7 @@ namespace DebateTimer
             // 
             // r100
             // 
+            this.r100.BackColor = System.Drawing.Color.White;
             this.r100.Checked = true;
             this.r100.CheckOnClick = true;
             this.r100.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -588,6 +595,7 @@ namespace DebateTimer
             // 
             // r030
             // 
+            this.r030.BackColor = System.Drawing.Color.White;
             this.r030.CheckOnClick = true;
             this.r030.Name = "r030";
             this.r030.Size = new System.Drawing.Size(102, 22);
@@ -595,6 +603,7 @@ namespace DebateTimer
             // 
             // r000
             // 
+            this.r000.BackColor = System.Drawing.Color.White;
             this.r000.Checked = true;
             this.r000.CheckOnClick = true;
             this.r000.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -604,6 +613,8 @@ namespace DebateTimer
             // 
             // mCros
             // 
+            this.mCros.BackColor = System.Drawing.Color.White;
+            this.mCros.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.mCros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.x200,
             this.x130,
@@ -611,11 +622,12 @@ namespace DebateTimer
             this.x030,
             this.x000});
             this.mCros.Name = "mCros";
-            this.mCros.Size = new System.Drawing.Size(162, 22);
+            this.mCros.Size = new System.Drawing.Size(152, 22);
             this.mCros.Text = "Cross-X";
             // 
             // x200
             // 
+            this.x200.BackColor = System.Drawing.Color.White;
             this.x200.CheckOnClick = true;
             this.x200.Name = "x200";
             this.x200.Size = new System.Drawing.Size(102, 22);
@@ -623,6 +635,7 @@ namespace DebateTimer
             // 
             // x130
             // 
+            this.x130.BackColor = System.Drawing.Color.White;
             this.x130.CheckOnClick = true;
             this.x130.Name = "x130";
             this.x130.Size = new System.Drawing.Size(102, 22);
@@ -630,6 +643,7 @@ namespace DebateTimer
             // 
             // x100
             // 
+            this.x100.BackColor = System.Drawing.Color.White;
             this.x100.CheckOnClick = true;
             this.x100.Name = "x100";
             this.x100.Size = new System.Drawing.Size(102, 22);
@@ -637,6 +651,7 @@ namespace DebateTimer
             // 
             // x030
             // 
+            this.x030.BackColor = System.Drawing.Color.White;
             this.x030.CheckOnClick = true;
             this.x030.Name = "x030";
             this.x030.Size = new System.Drawing.Size(102, 22);
@@ -644,6 +659,7 @@ namespace DebateTimer
             // 
             // x000
             // 
+            this.x000.BackColor = System.Drawing.Color.White;
             this.x000.Checked = true;
             this.x000.CheckOnClick = true;
             this.x000.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -653,29 +669,30 @@ namespace DebateTimer
             // 
             // oAB
             // 
+            this.oAB.BackColor = System.Drawing.Color.White;
             this.oAB.CheckOnClick = true;
+            this.oAB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.oAB.Name = "oAB";
-            this.oAB.Size = new System.Drawing.Size(162, 22);
+            this.oAB.Size = new System.Drawing.Size(152, 22);
             this.oAB.Text = "Beep Alert";
             this.oAB.CheckedChanged += new System.EventHandler(this.oAB_CheckedChanged);
             // 
             // oAV
             // 
+            this.oAV.BackColor = System.Drawing.Color.White;
             this.oAV.CheckOnClick = true;
+            this.oAV.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.oAV.Name = "oAV";
-            this.oAV.Size = new System.Drawing.Size(162, 22);
+            this.oAV.Size = new System.Drawing.Size(152, 22);
             this.oAV.Text = "Voice Alert";
             this.oAV.CheckedChanged += new System.EventHandler(this.oAV_CheckedChanged);
             // 
-            // mSep2
-            // 
-            this.mSep2.Name = "mSep2";
-            this.mSep2.Size = new System.Drawing.Size(159, 6);
-            // 
             // bExit
             // 
+            this.bExit.BackColor = System.Drawing.Color.White;
+            this.bExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.bExit.Name = "bExit";
-            this.bExit.Size = new System.Drawing.Size(162, 22);
+            this.bExit.Size = new System.Drawing.Size(152, 22);
             this.bExit.Text = "Exit";
             this.bExit.Click += new System.EventHandler(this.bExit_Click);
             // 
@@ -688,11 +705,9 @@ namespace DebateTimer
             this.bC,
             this.bR,
             this.bX,
-            this.mSep3,
             this.AffP,
             this.NegP,
             this.oReset,
-            this.mSep4,
             this.oDefaults,
             this.oTU});
             this.Start.Image = ((System.Drawing.Image)(resources.GetObject("Start.Image")));
@@ -706,6 +721,7 @@ namespace DebateTimer
             // 
             // bS
             // 
+            this.bS.BackColor = System.Drawing.Color.White;
             this.bS.Name = "bS";
             this.bS.Size = new System.Drawing.Size(134, 22);
             this.bS.Text = "Start/Stop";
@@ -713,6 +729,7 @@ namespace DebateTimer
             // 
             // bC
             // 
+            this.bC.BackColor = System.Drawing.Color.White;
             this.bC.Name = "bC";
             this.bC.Padding = new System.Windows.Forms.Padding(0);
             this.bC.Size = new System.Drawing.Size(134, 20);
@@ -721,6 +738,7 @@ namespace DebateTimer
             // 
             // bR
             // 
+            this.bR.BackColor = System.Drawing.Color.White;
             this.bR.Name = "bR";
             this.bR.Padding = new System.Windows.Forms.Padding(0);
             this.bR.Size = new System.Drawing.Size(134, 20);
@@ -729,18 +747,15 @@ namespace DebateTimer
             // 
             // bX
             // 
+            this.bX.BackColor = System.Drawing.Color.White;
             this.bX.Name = "bX";
             this.bX.Size = new System.Drawing.Size(134, 22);
             this.bX.Text = "3:00";
             this.bX.Click += new System.EventHandler(this.bX_Click);
             // 
-            // mSep3
-            // 
-            this.mSep3.Name = "mSep3";
-            this.mSep3.Size = new System.Drawing.Size(131, 6);
-            // 
             // AffP
             // 
+            this.AffP.BackColor = System.Drawing.Color.White;
             this.AffP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(192)))));
             this.AffP.Name = "AffP";
             this.AffP.Padding = new System.Windows.Forms.Padding(0);
@@ -750,6 +765,7 @@ namespace DebateTimer
             // 
             // NegP
             // 
+            this.NegP.BackColor = System.Drawing.Color.White;
             this.NegP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.NegP.Name = "NegP";
             this.NegP.Padding = new System.Windows.Forms.Padding(0);
@@ -759,25 +775,23 @@ namespace DebateTimer
             // 
             // oReset
             // 
+            this.oReset.BackColor = System.Drawing.Color.White;
             this.oReset.Name = "oReset";
             this.oReset.Size = new System.Drawing.Size(134, 22);
             this.oReset.Text = "Reset Prep";
             this.oReset.Click += new System.EventHandler(this.oReset_Click);
             // 
-            // mSep4
-            // 
-            this.mSep4.Name = "mSep4";
-            this.mSep4.Size = new System.Drawing.Size(131, 6);
-            // 
             // oDefaults
             // 
+            this.oDefaults.BackColor = System.Drawing.Color.White;
             this.oDefaults.Name = "oDefaults";
             this.oDefaults.Size = new System.Drawing.Size(134, 22);
-            this.oDefaults.Text = "Defaults...";
+            this.oDefaults.Text = "Configure";
             this.oDefaults.Click += new System.EventHandler(this.oDefaults_Click);
             // 
             // oTU
             // 
+            this.oTU.BackColor = System.Drawing.Color.White;
             this.oTU.CheckOnClick = true;
             this.oTU.Name = "oTU";
             this.oTU.Size = new System.Drawing.Size(134, 22);
@@ -829,6 +843,10 @@ namespace DebateTimer
             this.Disp.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Disp_KeyUp);
             this.Disp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Disp_MouseDown);
             // 
+            // timerTick
+            // 
+            this.timerTick.Tick += new System.EventHandler(this.timeTick_Tick);
+            // 
             // TimerWin
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(194)))), ((int)(((byte)(238)))));
@@ -843,6 +861,7 @@ namespace DebateTimer
             this.Name = "TimerWin";
             this.ShowIcon = false;
             this.Text = "Constructive";
+            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.DimGray;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TimerWin_FormClosing);
             this.Load += new System.EventHandler(this.TimerWin_Load);
@@ -856,37 +875,37 @@ namespace DebateTimer
 
         public void loadProfile()
         {
-            this.prof(this.AffP, "p");
-            this.prof(this.NegP, "p");
-            this.prof(this.bC, "c");
-            this.prof(this.bX, "x");
-            this.prof(this.bR, "r");
+            prof(AffP, "p");
+            prof(NegP, "p");
+            prof(bC, "c");
+            prof(bX, "x");
+            prof(bR, "r");
         }
 
         private void loadProfileOnOK(object sender, FormClosingEventArgs e)
         {
-            this.loadProfile();
+            loadProfile();
         }
 
         private void NegP_Click(object sender, EventArgs e)
         {
-            this.TimeSet(this.NegP.Text, "Neg Prep");
+            TimeSet(NegP.Text, "Neg Prep");
         }
 
         private void oAB_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.oAB.Checked)
+            if (oAB.Checked)
             {
-                this.oAV.Checked = false;
+                oAV.Checked = false;
             }
         }
 
      
         private void oAV_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.oAV.Checked)
+            if (oAV.Checked)
             {
-                this.oAB.Checked = false;
+                oAB.Checked = false;
             }
         }
 
@@ -895,26 +914,22 @@ namespace DebateTimer
             TimeProfiles profiles = new TimeProfiles();
             profiles.Show();
             profiles.TopMost = base.TopMost;
-            profiles.FormClosing += new FormClosingEventHandler(this.loadProfileOnOK);
+            profiles.FormClosing += new FormClosingEventHandler(loadProfileOnOK);
         }
 
         private void oReset_Click(object sender, EventArgs e)
         {
-            this.prof(this.AffP, "p");
-            this.prof(this.NegP, "p");
+            prof(AffP, "p");
+            prof(NegP, "p");
         }
 
-        private void oTop_CheckedChanged(object sender, EventArgs e)
-        {
-            base.TopMost = this.oTop.Checked;
-        }
 
         private void oTran_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.oTran.Checked)
+            if (oTran.Checked)
             {
                 base.FormBorderStyle = FormBorderStyle.None;
-                base.TransparencyKey = this.BackColor;
+                base.TransparencyKey = BackColor;
             }
             else
             {
@@ -925,9 +940,9 @@ namespace DebateTimer
 
         private void oTU_Click(object sender, EventArgs e)
         {
-            if (this.oTU.Checked & !this.timeTick.Enabled)
+            if (oTU.Checked & !timerTick.Enabled)
             {
-                this.Disp.Text = "0:00";
+                Disp.Text = "0:00";
             }
         }
 
@@ -964,80 +979,80 @@ namespace DebateTimer
         private int s2i(string s)
         {
             int index = s.IndexOf(":");
-            return ((this.val(s.Substring(0, index)) * 60) + this.val(s.Substring(index + 1)));
+            return ((val(s.Substring(0, index)) * 60) + val(s.Substring(index + 1)));
         }
 
         private void Start_Click(object sender, EventArgs e)
         {
-            this.StartClick();
+            StartClick();
         }
 
         private void Start_MouseMove(object sender, MouseEventArgs e)
         {
-            this.Start.ShowDropDown();
-            this.Start.DropDown.MouseLeave += new EventHandler(this.StartDropDownMouseLeave);
+            Start.ShowDropDown();
+            Start.DropDown.MouseLeave += new EventHandler(StartDropDownMouseLeave);
         }
 
         private void StartClick()
         {
-            if (this.timeTick.Enabled)
+            if (timerTick.Enabled)
             {
-                this.Disp.BackColor = this.BackColor;
+                Disp.BackColor = BackColor;
                 base.Activate();
-                this.timeTick.Stop();
-                this.Start.Image = Resources.go1;
+                timerTick.Stop();
+                Start.Image = Resources.go1;
             }
             else
             {
-                this.Menubar.Focus();
-                if (this.oAB.Checked | this.oAV.Checked)
+                Menubar.Focus();
+                if (oAB.Checked | oAV.Checked)
                 {
-                    this.BeepAlert();
+                    BeepAlert();
                 }
-                this.Disp.Text = this.convertInput();
-                this.sysT = DateTime.Now.Second;
-                this.timeTick.Start();
-                this.Start.Image = Resources.go2;
+                Disp.Text = convertInput();
+                sysT = DateTime.Now.Second;
+                timerTick.Start();
+                Start.Image = Resources.go2;
             }
         }
 
         private void bS_Click(object sender, EventArgs e)
         {
-            this.StartClick();
+            StartClick();
         }
 
         private void StartDropDownMouseLeave(object sender, EventArgs e)
         {
-            this.Start.HideDropDown();
+            Start.HideDropDown();
         }
 
         private void timeTick_Tick(object sender, EventArgs e)
         {
-            if (this.sysT != DateTime.Now.Second)
+            if (sysT != DateTime.Now.Second)
             {
-                this.sysT = DateTime.Now.Second;
-                string str = (this.Text.Length > 2) ? this.Text.Substring(0, 2) : "";
-                int t = this.s2i(this.Disp.Text);
-                if (this.oTU.Checked)
+                sysT = DateTime.Now.Second;
+                string str = (Text.Length > 2) ? Text.Substring(0, 2) : "";
+                int t = s2i(Disp.Text);
+                if (oTU.Checked)
                 {
                     t++;
-                    this.Disp.Text = this.i2s(t);
+                    Disp.Text = i2s(t);
                     if (t >= 0xe10)
                     {
-                        this.StartClick();
+                        StartClick();
                     }
                 }
                 else if (t > 0)
                 {
-                    if (((((str == "Co") & ((((((((this.c030.Checked & (t == 30)) | (this.c100.Checked & (t == 60))) | (this.c130.Checked & (t == 90))) | (this.c200.Checked & (t == 120))) | (this.c300.Checked & (t == 180))) | (this.c400.Checked & (t == 240))) | (this.c500.Checked & (t == 300))) | (this.c600.Checked & (t == 360)))) | ((str == "Cr") & ((((this.x030.Checked & (t == 30)) | (this.x100.Checked & (t == 60))) | (this.x130.Checked & (t == 90))) | (this.x200.Checked & (t == 120))))) | ((str == "Re") & (((((((this.r030.Checked & (t == 30)) | (this.r100.Checked & (t == 60))) | (this.r130.Checked & (t == 90))) | (this.r200.Checked & (t == 120))) | (this.r300.Checked & (t == 180))) | (this.r400.Checked & (t == 240))) | (this.r500.Checked & (t == 300))))) | (((str == "Af") | (str == "Ne")) & ((((((((this.p030.Checked & (t == 30)) | (this.p100.Checked & (t == 60))) | (this.p130.Checked & (t == 90))) | (this.p200.Checked & (t == 120))) | (this.p300.Checked & (t == 180))) | (this.p400.Checked & (t == 240))) | (this.p500.Checked & (t == 300))) | (this.p600.Checked & (t == 360)))))
+                    if (((((str == "Co") & ((((((((c030.Checked & (t == 30)) | (c100.Checked & (t == 60))) | (c130.Checked & (t == 90))) | (c200.Checked & (t == 120))) | (c300.Checked & (t == 180))) | (c400.Checked & (t == 240))) | (c500.Checked & (t == 300))) | (c600.Checked & (t == 360)))) | ((str == "Cr") & ((((x030.Checked & (t == 30)) | (x100.Checked & (t == 60))) | (x130.Checked & (t == 90))) | (x200.Checked & (t == 120))))) | ((str == "Re") & (((((((r030.Checked & (t == 30)) | (r100.Checked & (t == 60))) | (r130.Checked & (t == 90))) | (r200.Checked & (t == 120))) | (r300.Checked & (t == 180))) | (r400.Checked & (t == 240))) | (r500.Checked & (t == 300))))) | (((str == "Af") | (str == "Ne")) & ((((((((p030.Checked & (t == 30)) | (p100.Checked & (t == 60))) | (p130.Checked & (t == 90))) | (p200.Checked & (t == 120))) | (p300.Checked & (t == 180))) | (p400.Checked & (t == 240))) | (p500.Checked & (t == 300))) | (p600.Checked & (t == 360)))))
                     {
-                        if (this.oAB.Checked)
+                        if (oAB.Checked)
                         {
-                            this.BeepAlert();
-                            this.Disp.BackColor = Color.FromArgb(0xff, 0, 0);
-                            this.flashInt = t - 4;
+                            BeepAlert();
+                            Disp.BackColor = Color.FromArgb(0xff, 0, 0);
+                            flashInt = t - 4;
                         }
-                        if (this.oAV.Checked)
+                        if (oAV.Checked)
                         {
                             UnmanagedMemoryStream stream = Resources._30;
                             switch (t)
@@ -1077,31 +1092,31 @@ namespace DebateTimer
                             new SoundPlayer(stream).Play();
                         }
                     }
-                    if (this.flashInt == t)
+                    if (flashInt == t)
                     {
-                        this.flashInt = 0;
-                        this.Disp.BackColor = this.BackColor;
+                        flashInt = 0;
+                        Disp.BackColor = BackColor;
                     }
                     t--;
-                    this.Disp.Text = this.i2s(t);
-                    if (this.Text == "Aff Prep")
+                    Disp.Text = i2s(t);
+                    if (Text == "Aff Prep")
                     {
-                        this.AffP.Text = this.Disp.Text;
+                        AffP.Text = Disp.Text;
                     }
-                    else if (this.Text == "Neg Prep")
+                    else if (Text == "Neg Prep")
                     {
-                        this.NegP.Text = this.Disp.Text;
+                        NegP.Text = Disp.Text;
                     }
                 }
                 else
                 {
-                    if ((((((str == "Co") & this.c000.Checked) | ((str == "Re") & this.r000.Checked)) | ((str == "Cr") & this.x000.Checked)) | (((str == "Af") | (str == "Ne")) & this.p000.Checked)) & (this.oAB.Checked | this.oAV.Checked))
+                    if ((((((str == "Co") & c000.Checked) | ((str == "Re") & r000.Checked)) | ((str == "Cr") & x000.Checked)) | (((str == "Af") | (str == "Ne")) & p000.Checked)) & (oAB.Checked | oAV.Checked))
                     {
                         new SoundPlayer(Resources.beep_final).Play();
                     }
                     base.Activate();
-                    this.timeTick.Stop();
-                    this.Start.Image = Resources.go1;
+                    timerTick.Stop();
+                    Start.Image = Resources.go1;
                     string str2 = str;
                     if (str2 != null)
                     {
@@ -1109,16 +1124,16 @@ namespace DebateTimer
                         {
                             if (str2 == "Co")
                             {
-                                this.bX.PerformClick();
+                                bX.PerformClick();
                             }
                             else if (str2 == "Cr")
                             {
-                                this.bC.PerformClick();
+                                bC.PerformClick();
                             }
                         }
                         else
                         {
-                            this.bR.PerformClick();
+                            bR.PerformClick();
                         }
                     }
                 }
@@ -1128,124 +1143,122 @@ namespace DebateTimer
         private void TimerWin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Settings settings = Settings.Default;
-            settings.c000 = this.c000.Checked;
-            settings.c030 = this.c030.Checked;
-            settings.c100 = this.c100.Checked;
-            settings.c130 = this.c130.Checked;
-            settings.c200 = this.c200.Checked;
-            settings.c300 = this.c300.Checked;
-            settings.c400 = this.c400.Checked;
-            settings.c500 = this.c500.Checked;
-            settings.c600 = this.c600.Checked;
-            settings.r000 = this.r000.Checked;
-            settings.r030 = this.r030.Checked;
-            settings.r100 = this.r100.Checked;
-            settings.r130 = this.r130.Checked;
-            settings.r200 = this.r200.Checked;
-            settings.r300 = this.r300.Checked;
-            settings.r400 = this.r400.Checked;
-            settings.r500 = this.r500.Checked;
-            settings.p000 = this.p000.Checked;
-            settings.p030 = this.p030.Checked;
-            settings.p100 = this.p100.Checked;
-            settings.p130 = this.p130.Checked;
-            settings.p200 = this.p200.Checked;
-            settings.p300 = this.p300.Checked;
-            settings.p400 = this.p400.Checked;
-            settings.p500 = this.p500.Checked;
-            settings.p600 = this.p600.Checked;
-            settings.x000 = this.x000.Checked;
-            settings.x030 = this.x030.Checked;
-            settings.x100 = this.x100.Checked;
-            settings.x130 = this.x130.Checked;
-            settings.x200 = this.x200.Checked;
-            settings.oAV = this.oAV.Checked;
-            settings.oAB = this.oAB.Checked;
-            settings.oTU = this.oTU.Checked;
-            settings.oTran = this.oTran.Checked;
-            settings.oTop = this.oTop.Checked;
+            settings.c000 = c000.Checked;
+            settings.c030 = c030.Checked;
+            settings.c100 = c100.Checked;
+            settings.c130 = c130.Checked;
+            settings.c200 = c200.Checked;
+            settings.c300 = c300.Checked;
+            settings.c400 = c400.Checked;
+            settings.c500 = c500.Checked;
+            settings.c600 = c600.Checked;
+            settings.r000 = r000.Checked;
+            settings.r030 = r030.Checked;
+            settings.r100 = r100.Checked;
+            settings.r130 = r130.Checked;
+            settings.r200 = r200.Checked;
+            settings.r300 = r300.Checked;
+            settings.r400 = r400.Checked;
+            settings.r500 = r500.Checked;
+            settings.p000 = p000.Checked;
+            settings.p030 = p030.Checked;
+            settings.p100 = p100.Checked;
+            settings.p130 = p130.Checked;
+            settings.p200 = p200.Checked;
+            settings.p300 = p300.Checked;
+            settings.p400 = p400.Checked;
+            settings.p500 = p500.Checked;
+            settings.p600 = p600.Checked;
+            settings.x000 = x000.Checked;
+            settings.x030 = x030.Checked;
+            settings.x100 = x100.Checked;
+            settings.x130 = x130.Checked;
+            settings.x200 = x200.Checked;
+            settings.oAV = oAV.Checked;
+            settings.oAB = oAB.Checked;
+            settings.oTU = oTU.Checked;
+            settings.oTran = oTran.Checked;
             settings.wX = base.Location.X;
             settings.wY = base.Location.Y;
             settings.wS = base.Width;
-            settings.Disp = this.Disp.Text;
-            settings.AffP = this.AffP.Text;
-            settings.NegP = this.NegP.Text;
-            settings.speechType = this.Text;
+            settings.Disp = Disp.Text;
+            settings.AffP = AffP.Text;
+            settings.NegP = NegP.Text;
+            settings.speechType = Text;
             settings.Save();
         }
 
         private void TimerWin_Load(object sender, EventArgs e)
         {
             Settings settings = Settings.Default;
-            this.loadProfile();
-            this.c000.Checked = settings.c000;
-            this.c030.Checked = settings.c030;
-            this.c100.Checked = settings.c100;
-            this.c130.Checked = settings.c130;
-            this.c200.Checked = settings.c200;
-            this.c300.Checked = settings.c300;
-            this.c400.Checked = settings.c400;
-            this.c500.Checked = settings.c500;
-            this.c600.Checked = settings.c600;
-            this.r000.Checked = settings.r000;
-            this.r030.Checked = settings.r030;
-            this.r100.Checked = settings.r100;
-            this.r130.Checked = settings.r130;
-            this.r200.Checked = settings.r200;
-            this.r300.Checked = settings.r300;
-            this.r400.Checked = settings.r400;
-            this.r500.Checked = settings.r500;
-            this.p000.Checked = settings.p000;
-            this.p030.Checked = settings.p030;
-            this.p100.Checked = settings.p100;
-            this.p130.Checked = settings.p130;
-            this.p200.Checked = settings.p200;
-            this.p300.Checked = settings.p300;
-            this.p400.Checked = settings.p400;
-            this.p500.Checked = settings.p500;
-            this.p600.Checked = settings.p600;
-            this.x000.Checked = settings.x000;
-            this.x030.Checked = settings.x030;
-            this.x100.Checked = settings.x100;
-            this.x130.Checked = settings.x130;
-            this.x200.Checked = settings.x200;
-            this.oAV.Checked = settings.oAV;
-            this.oAB.Checked = settings.oAB;
-            this.oTU.Checked = settings.oTU;
-            this.oTran.Checked = settings.oTran;
-            this.oTop.Checked = settings.oTop;
+            loadProfile();
+            c000.Checked = settings.c000;
+            c030.Checked = settings.c030;
+            c100.Checked = settings.c100;
+            c130.Checked = settings.c130;
+            c200.Checked = settings.c200;
+            c300.Checked = settings.c300;
+            c400.Checked = settings.c400;
+            c500.Checked = settings.c500;
+            c600.Checked = settings.c600;
+            r000.Checked = settings.r000;
+            r030.Checked = settings.r030;
+            r100.Checked = settings.r100;
+            r130.Checked = settings.r130;
+            r200.Checked = settings.r200;
+            r300.Checked = settings.r300;
+            r400.Checked = settings.r400;
+            r500.Checked = settings.r500;
+            p000.Checked = settings.p000;
+            p030.Checked = settings.p030;
+            p100.Checked = settings.p100;
+            p130.Checked = settings.p130;
+            p200.Checked = settings.p200;
+            p300.Checked = settings.p300;
+            p400.Checked = settings.p400;
+            p500.Checked = settings.p500;
+            p600.Checked = settings.p600;
+            x000.Checked = settings.x000;
+            x030.Checked = settings.x030;
+            x100.Checked = settings.x100;
+            x130.Checked = settings.x130;
+            x200.Checked = settings.x200;
+            oAV.Checked = settings.oAV;
+            oAB.Checked = settings.oAB;
+            oTU.Checked = settings.oTU;
+            oTran.Checked = settings.oTran;
             base.Location = new Point(Math.Max(settings.wX, 0), Math.Max(settings.wY, 0));
             base.Width = settings.wS;
-            this.Disp.Text = settings.Disp;
-            this.AffP.Text = settings.AffP;
-            this.NegP.Text = settings.NegP;
-            this.Text = settings.speechType;
-            if (this.Text == "Aff Prep")
+            Disp.Text = settings.Disp;
+            AffP.Text = settings.AffP;
+            NegP.Text = settings.NegP;
+            Text = settings.speechType;
+            if (Text == "Aff Prep")
             {
-                this.Disp.ForeColor = this.AffP.ForeColor;
+                Disp.ForeColor = AffP.ForeColor;
             }
-            if (this.Text == "Neg Prep")
+            if (Text == "Neg Prep")
             {
-                this.Disp.ForeColor = this.NegP.ForeColor;
+                Disp.ForeColor = NegP.ForeColor;
             }
-            this.Menubar.Cursor = Cursors.Hand;
+            Menubar.Cursor = Cursors.Hand;
         }
 
         private void TimerWin_Resize(object sender, EventArgs e)
         {
-            this.Disp.Font = new Font(this.Disp.Font.Name, (float) ((int) (0.22 * base.Width)), FontStyle.Bold, this.Disp.Font.Unit, this.Disp.Font.GdiCharSet);
-            base.Height = (int) (this.Disp.Height * 1.2);
+            Disp.Font = new Font(Disp.Font.Name, (float) ((int) (0.22 * base.Width)), FontStyle.Bold, Disp.Font.Unit, Disp.Font.GdiCharSet);
+            base.Height = (int) (Disp.Height * 1.2);
         }
 
         private void TimeSet(string timeSet, string name)
         {
-            if (this.timeTick.Enabled)
+            if (timerTick.Enabled)
             {
-                this.StartClick();
+                StartClick();
             }
-            this.Text = name;
-            this.Disp.Text = timeSet;
-            this.Disp.ForeColor = (name == "Neg Prep") ? Color.FromArgb(0xc0, 0, 0) : ((name == "Aff Prep") ? Color.FromArgb(0, 0x44, 0xc0) : Color.Black);
+            Text = name;
+            Disp.Text = timeSet;
+            Disp.ForeColor = (name == "Neg Prep") ? Color.FromArgb(0xc0, 0, 0) : ((name == "Aff Prep") ? Color.FromArgb(0, 0x44, 0xc0) : Color.Black);
         }
 
         private int val(string s)
@@ -1263,7 +1276,7 @@ namespace DebateTimer
 
         private void Start_MouseLeave(object sender, EventArgs e)
         {
-            this.Config.HideDropDown();
+            Config.HideDropDown();
         }
 
        
