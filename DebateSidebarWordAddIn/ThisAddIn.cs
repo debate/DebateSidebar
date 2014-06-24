@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -19,6 +19,8 @@ public Document speechDoc;
 //startup and document events
 private void ThisAddIn_Startup(object sender, EventArgs e)
 {
+
+  
 
     try
     {
