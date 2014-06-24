@@ -17,8 +17,14 @@ namespace DebateSidebarWordAddIn
 
                     if (CTP.Visible)
                         ((Sidebar)CTP.Control).populateDoc();
-                    break;
+                    return;
                 }
+
+            Globals.ThisAddIn.addTaskbar();
+            Globals.ThisAddIn.addTemplate();
+
+
+
         }
 
         private void groupDebate_DialogLauncherClick(object sender, RibbonControlEventArgs e)
