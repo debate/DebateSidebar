@@ -1,0 +1,96 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DebateSidebarWordAddIn.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FilesDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Hotkeys" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PanelPosition" Type="Microsoft.Office.Core.MsoCTPDockPosition" Scope="User">
+      <Value Profile="(Default)">msoCTPDockPositionLeft</Value>
+    </Setting>
+    <Setting Name="PanelWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="OpenTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExpandHeadings" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HeadingLevels" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="FontName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Garamond</Value>
+    </Setting>
+    <Setting Name="FontSize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">11</Value>
+    </Setting>
+    <Setting Name="SpeechDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PreserveParagraphs" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UploadSpeech" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="k1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F1</Value>
+    </Setting>
+    <Setting Name="k2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F1, Control</Value>
+    </Setting>
+    <Setting Name="k3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">G, Control</Value>
+    </Setting>
+    <Setting Name="k4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">R, Control</Value>
+    </Setting>
+    <Setting Name="k5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F2</Value>
+    </Setting>
+    <Setting Name="k6" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F2, Control</Value>
+    </Setting>
+    <Setting Name="k7" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="k8" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="k9" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Oemtilde</Value>
+    </Setting>
+    <Setting Name="k10" Type="System.String" Scope="User">
+      <Value Profile="(Default)">T, Control</Value>
+    </Setting>
+    <Setting Name="k11" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Oemtilde, Control</Value>
+    </Setting>
+    <Setting Name="k12" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Oemtilde, Alt</Value>
+    </Setting>
+    <Setting Name="MinimizeUnread" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MinimizeUnreadSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="UnderlineBold" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BoxHeading1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="TimerPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
