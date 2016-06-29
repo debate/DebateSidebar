@@ -296,7 +296,7 @@ namespace DebateTimer
             this.Menubar.Location = new System.Drawing.Point(0, 0);
             this.Menubar.Name = "Menubar";
             this.Menubar.Padding = new System.Windows.Forms.Padding(0);
-            this.Menubar.Size = new System.Drawing.Size(28, 58);
+            this.Menubar.Size = new System.Drawing.Size(138, 86);
             this.Menubar.TabIndex = 4;
             this.Menubar.Text = "MenuStrip1";
             // 
@@ -316,7 +316,7 @@ namespace DebateTimer
             this.Config.Image = ((System.Drawing.Image)(resources.GetObject("Config.Image")));
             this.Config.Name = "Config";
             this.Config.Padding = new System.Windows.Forms.Padding(0);
-            this.Config.Size = new System.Drawing.Size(27, 28);
+            this.Config.Size = new System.Drawing.Size(137, 28);
             this.Config.Text = "Options";
             this.Config.Click += new System.EventHandler(this.Config_Click);
             this.Config.MouseEnter += new System.EventHandler(this.Config_MouseEnter);
@@ -1278,12 +1278,15 @@ namespace DebateTimer
 
         private void Start_MouseLeave(object sender, EventArgs e)
         {
-            Start.HideDropDown();
+           // Start.HideDropDown();
         }
 
         private void Config_MouseLeave(object sender, EventArgs e)
         {
-            Config.HideDropDown();
+            // Config.HideDropDown();
+           
+
         }
+
     }
 }

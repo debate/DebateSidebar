@@ -153,8 +153,8 @@ public void addTaskbar(Document doc = null)
 
     doc.ActiveWindow.DocumentMap = false;
 
-    CustomTaskPane CTP = CustomTaskPanes.Add(new Sidebar(), " ", doc.ActiveWindow );
-    CTP.Width = Properties.Settings.Default.PanelWidth;
+    CustomTaskPane CTP = CustomTaskPanes.Add(new Sidebar(), " ", doc.ActiveWindow);
+    CTP.Width = Math.Max(300, Properties.Settings.Default.PanelWidth);
     CTP.DockPosition = Properties.Settings.Default.PanelPosition;
 
     CTP.DockPositionChanged += CTP_DockPositionChanged;

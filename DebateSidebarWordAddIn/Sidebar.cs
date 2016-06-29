@@ -279,7 +279,7 @@ public void populateFiles()
 
     if (!Directory.Exists(tubpath))
     {
-        treeFiles.Nodes.Add("Double click to set Debate Files path").Tag = "click";
+        treeFiles.Nodes.Add("Double click to set filepath").Tag = "click";
 
         return;
     }

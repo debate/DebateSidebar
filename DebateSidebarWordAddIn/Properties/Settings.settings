@@ -15,7 +15,7 @@
       <Value Profile="(Default)">msoCTPDockPositionLeft</Value>
     </Setting>
     <Setting Name="PanelWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">250</Value>
+      <Value Profile="(Default)">310</Value>
     </Setting>
     <Setting Name="OpenTemplate" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

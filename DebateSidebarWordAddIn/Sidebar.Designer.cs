@@ -88,12 +88,12 @@
             this.toolStripContainer4.ContentPanel.Controls.Add(this.treeFiles);
             this.toolStripContainer4.ContentPanel.Controls.Add(this.treeDoc);
             this.toolStripContainer4.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.toolStripContainer4.ContentPanel.Size = new System.Drawing.Size(420, 219);
+            this.toolStripContainer4.ContentPanel.Size = new System.Drawing.Size(301, 219);
             this.toolStripContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer4.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.toolStripContainer4.Name = "toolStripContainer4";
-            this.toolStripContainer4.Size = new System.Drawing.Size(420, 250);
+            this.toolStripContainer4.Size = new System.Drawing.Size(301, 250);
             this.toolStripContainer4.TabIndex = 2;
             this.toolStripContainer4.Text = "toolStripContainer4";
             // 
@@ -113,7 +113,7 @@
             this.treeFiles.Location = new System.Drawing.Point(0, 0);
             this.treeFiles.Margin = new System.Windows.Forms.Padding(0);
             this.treeFiles.Name = "treeFiles";
-            this.treeFiles.Size = new System.Drawing.Size(420, 219);
+            this.treeFiles.Size = new System.Drawing.Size(301, 219);
             this.treeFiles.TabIndex = 3;
             this.treeFiles.Visible = false;
             this.treeFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeFiles_AfterSelect);
@@ -167,7 +167,7 @@
             this.treeDoc.Margin = new System.Windows.Forms.Padding(0);
             this.treeDoc.Name = "treeDoc";
             this.treeDoc.ShowLines = false;
-            this.treeDoc.Size = new System.Drawing.Size(420, 219);
+            this.treeDoc.Size = new System.Drawing.Size(301, 219);
             this.treeDoc.TabIndex = 4;
             this.treeDoc.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeDoc_AfterExpand);
             this.treeDoc.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeDoc_NodeMouseHover);
@@ -278,7 +278,7 @@
             this.Menubar.Name = "Menubar";
             this.Menubar.Padding = new System.Windows.Forms.Padding(0);
             this.Menubar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.Menubar.Size = new System.Drawing.Size(289, 31);
+            this.Menubar.Size = new System.Drawing.Size(298, 31);
             this.Menubar.TabIndex = 1;
             this.Menubar.Text = "toolStrip2";
             // 
@@ -568,7 +568,7 @@
             this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Sidebar";
-            this.Size = new System.Drawing.Size(420, 250);
+            this.Size = new System.Drawing.Size(301, 250);
             this.Load += new System.EventHandler(this.Sidebar_Load);
             this.toolStripContainer4.ContentPanel.ResumeLayout(false);
             this.toolStripContainer4.TopToolStripPanel.ResumeLayout(false);

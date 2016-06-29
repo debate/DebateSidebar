@@ -218,6 +218,7 @@
     <EmbeddedResource Include="ManageSpeech.resx">
       <DependentUpon>ManageSpeech.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -251,7 +252,6 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
-    <None Include="user.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\b.png" />
