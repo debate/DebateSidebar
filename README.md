@@ -1,6 +1,6 @@
-**[Download Debate Sidebar](https://github.com/gulakov/DebateSidebarWordAddIn/releases/download/2.0.0/Debate.Sidebar.Word.AddIn.Setup.exe)**
+## **[Download](https://github.com/debate/DebateSidebar/releases/download/beta/DebateSidebarWordAddIn.zip)**
 
-![preview](https://github.com/gulakov/DebateSidebar/blob/master/Setup/preview.png)
+![preview](https://i.imgur.com/7hHGUxm.png)
 
 ![preview](https://i.imgur.com/KMy6R4P.png)
 
