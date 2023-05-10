@@ -93,25 +93,6 @@ public static void refreshDoc()
     c.indexLastTime = nowTime;
 }
 
-public static void switchDocuments()
-{
-    Sidebar c = null;
-
-    foreach (CustomTaskPane CTP in Globals.ThisAddIn.CustomTaskPanes)
-        if (CTP != null && CTP.Window != null
-            && CTP.Window.Equals(Globals.ThisAddIn.Application.ActiveDocument.ActiveWindow))
-        {
-            c = (Sidebar)CTP.Control;
-            break;
-        }
-
-    if (c == null)
-        return;
-    
-    c.bSwitchWindow.ShowDropDown();
- 
-}
-
 //Format Macros
 
 public static void EscPressed()

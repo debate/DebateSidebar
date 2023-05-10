@@ -219,6 +219,7 @@
       <DependentUpon>ManageSpeech.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="DebateSidebarWordAddIn_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -342,10 +343,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>DebateSidebarWordAddIn_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E9360FD6EB05D9460274A4E4D4F14CAAF737AC16</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>74BC641F39AD61C3D60C71E6707E2C572976FEE3</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

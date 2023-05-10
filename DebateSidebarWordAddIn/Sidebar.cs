@@ -46,24 +46,7 @@ private void Sidebar_Load(object sender, EventArgs e)
 
     int hLevels = Convert.ToInt32(Properties.Settings.Default.HeadingLevels);
 
-    if (hLevels <= 3)
-    {
-        contextCollapseHeading3.Visible = false;
-        bCollapseHeading3.Visible = false;
-        bHeading4.Visible = false;
-    } else if (hLevels <= 2)
-    {
-        contextCollapseHeading2.Visible = false;
-        bCollapseHeading2.Visible = false;
-        bHeading3.Visible = false;
-    } else if (hLevels <= 1)
-    {
-        bCollapse.Visible = false;
-        bHeading2.Visible = false;
-        bExpand.Visible = false;
-    }
-
-
+   
     if (a.Windows.Count == 1 && a.Windows[1].Caption.Contains("Document1"))
         bFilesShow.PerformClick();
 
@@ -216,11 +199,7 @@ private void treeDoc_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e
 private void treeDoc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
 {
     try { 
-    if (e.Node.Tag.ToString() == "refresh")
-    {
-        populateDoc();
-        return;
-    }
+
 
     if (DateTime.Now.ToString() == lastClick)
         return;
