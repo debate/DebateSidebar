@@ -37,8 +37,6 @@ private void Sidebar_Load(object sender, EventArgs e)
     }
     else
     {
-        if (!treeDoc.Visible)
-            bFilesShow.PerformClick();
 
         treeDoc.Nodes.Add("Click to show Headings Index").Tag = "refresh";
     }
@@ -47,8 +45,6 @@ private void Sidebar_Load(object sender, EventArgs e)
     int hLevels = Convert.ToInt32(Properties.Settings.Default.HeadingLevels);
 
    
-    if (a.Windows.Count == 1 && a.Windows[1].Caption.Contains("Document1"))
-        bFilesShow.PerformClick();
 
     dropdownWindows.KeyDown += dropdownWindows_KeyDown;
     dropdownWindows.KeyUp += dropdownWindows_KeyUp;
@@ -67,8 +63,6 @@ public void populateDoc()
     TreeNode node = new TreeNode();
     string docx = a.ActiveDocument.Content.WordOpenXML;
 
-    if (!treeDoc.Visible)
-        bFilesShow.PerformClick();
 
     treeDoc.Nodes.Clear();
 
@@ -329,8 +323,9 @@ private void treeFiles_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEve
         return;
     if (e.Node.Tag.ToString() == "click")
     {
-        var form = new Settings();
-        form.ShowDialog();
+          
+         var form = new Settings();
+         form.ShowDialog();
         return;
     }
 
@@ -364,22 +359,6 @@ private void treeFiles_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEve
 }
     
 //MENUBAR Switch Views
-
-private void bSwitchFilesHeadings_Click(object sender, EventArgs e)
-{
-    if (bFilesShow.Checked)
-    {
-        treeFiles.Show();
-        treeDoc.Hide();
-
-        populateFiles();
-    }
-    else
-    {
-        treeFiles.Hide();
-        treeDoc.Show();
-    }
-}
 
 //MENUBAR Index
     
@@ -677,6 +656,7 @@ private TreeNode findNode(TreeNode rootNode, string stringToFind)
 private void contextRefresh_Click(object sender, EventArgs e)
 {
     populateDoc();
+            populateFiles();
 }
     
 private void contextPromote_Click(object sender, EventArgs e)
@@ -771,6 +751,16 @@ private void contextExpand_Click(object sender, EventArgs e)
 }
 
         private void treeFiles_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void contextFiles_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void treeDoc_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
         }

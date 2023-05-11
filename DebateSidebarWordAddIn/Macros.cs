@@ -44,42 +44,7 @@ public static void refreshDoc()
 
     int level = Convert.ToInt32(Properties.Settings.Default.HeadingLevels);
 
-    if (!c.treeDoc.Visible)
-        c.bFilesShow.PerformClick();
 
-    //if (nowTime - 10 < c.indexLastTime)
-    
-        switch(c.indexLevel){
-            case 4:
-                c.bCollapse.PerformClick();
-            c.indexLevel = 1;
-           
-        break; case 3:
-
-        c.bExpand.PerformClick();
-            if (level >= 4)
-                c.indexLevel = 4;
-            else
-                c.indexLevel = 1;
-
-       	break; case 2:
-
-
-        c.bCollapseHeading3.PerformClick();
-            if (level >= 3)
-                c.indexLevel = 3;
-            else
-                c.indexLevel = 1;
-        break; case 1:
-
-        c.bCollapseHeading2.PerformClick();
-            if (level >= 2)
-                c.indexLevel = 2;
-            else
-                c.indexLevel = 1;
-
-        break;
-        }
    /* }
     else
     {
@@ -531,7 +496,10 @@ public static void ReadSpeech()
 
 public static void UploadSpeech()
 {
-    int i;
+
+            string speechServer = "http://hkrnews.com/speech";
+
+            int i;
     if (InternetGetConnectedState(out i, 0) == false)
     {
         MessageBox.Show("No internet connection");
@@ -620,7 +588,7 @@ public static void UploadSpeech()
     Globals.ThisAddIn.Application.StatusBar = "Uploading";
     string htmlCopy = o.Replace("&", "%26");
 
-    WebRequest request = WebRequest.Create("http://debatesynergy.com/speech");
+    WebRequest request = WebRequest.Create(speechServer);
     request.Method = "POST";
     byte[] byteArray = Encoding.UTF8.GetBytes("&data=" + htmlCopy);
     request.ContentType = "application/x-www-form-urlencoded";
@@ -634,7 +602,7 @@ public static void UploadSpeech()
         MessageBox.Show(responseFromServer);
     else //open URL with read speech 
         Process.Start(Path.Combine(Environment.GetEnvironmentVariable("SystemRoot"), "explorer.exe"),
-            "\"" + "http://debatesynergy.com/" + responseFromServer + "\"");
+            "\"" + responseFromServer + "\"");
 }
 
 //WinAPI

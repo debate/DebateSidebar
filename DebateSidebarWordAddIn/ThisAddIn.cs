@@ -94,56 +94,8 @@ public void addTemplate()
     if (s.OpenTemplate.Length > 0)
     {
         a.ActiveDocument.set_AttachedTemplate(s.OpenTemplate);
-        a.ActiveDocument.CopyStylesFromTemplate(s.OpenTemplate);
     }
-    else
-    {
-               
-        Document d = a.ActiveDocument;
-        Style Normal = d.Styles["Normal"], H1 = d.Styles["Heading 1"], 
-            H2 = d.Styles["Heading 2"], H3 = d.Styles["Heading 3"], 
-            H4 = d.Styles["Heading 4"];
-
-        if (Normal.Font.Name == s.FontName &&
-            Normal.Font.Size == Convert.ToInt32(s.FontSize))
-            return;
-
-
-        Normal.Font.Name = s.FontName;
-        Normal.Font.Size = Convert.ToInt32(s.FontSize);
-        H1.Font.Size = Convert.ToInt32(s.FontSize) + 15;
-        H1.Font.Name = s.FontName;
-        H1.Font.Underline = WdUnderline.wdUnderlineSingle;
-        H1.Font.Bold = 1;
-        H1.Font.Color = WdColor.wdColorBlack;
-        H1.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-
-        if (Properties.Settings.Default.BoxHeading1)
-        {
-            H1.ParagraphFormat.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleSingle;
-            H1.ParagraphFormat.Borders.OutsideLineWidth = WdLineWidth.wdLineWidth300pt;
-            H1.ParagraphFormat.Borders.OutsideColor = WdColor.wdColorAutomatic;
-        }
-
-        H2.Font.Size = Convert.ToInt32(s.FontSize) + 11;
-        H2.Font.Name = s.FontName;
-        H2.Font.Underline = WdUnderline.wdUnderlineSingle;
-        H2.Font.Bold = 1;
-        H2.Font.Color = WdColor.wdColorBlack;
-        H2.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-
-        H3.Font.Size = Convert.ToInt32(s.FontSize) + 4;
-        H3.Font.Name = s.FontName;
-        H3.Font.Underline = WdUnderline.wdUnderlineSingle;
-        H3.Font.Bold = 1;
-        H3.Font.Color = WdColor.wdColorBlack;
-        H3.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-
-        H4.Font.Size = Convert.ToInt32(s.FontSize);
-        H4.Font.Name = s.FontName;
-        H4.Font.Bold = 1;
-        H4.Font.Color = WdColor.wdColorBlack;
-    }
+   
 }
 
 public void addTaskbar(Document doc = null)

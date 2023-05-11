@@ -46,8 +46,11 @@ namespace DebateSidebarWordAddIn
 
         private void bFilesChange_Click(object sender, EventArgs e)
         {
-            if (dialogFolder.ShowDialog() == DialogResult.OK)
+             if (dialogFolder.ShowDialog() == DialogResult.OK){
                 bTubPath.Text = dialogFolder.SelectedPath;
+                Properties.Settings.Default.FilesDirectory = dialogFolder.SelectedPath;
+
+            }
         }
 
 
@@ -78,13 +81,9 @@ namespace DebateSidebarWordAddIn
                 bTemplatePath.Text = dialogFile.FileName;
         }
 
-        private void bTemplateCustom_CheckedChanged(object sender, EventArgs e)
+        private void bOpenWeb_CheckedChanged(object sender, EventArgs e)
         {
-            bTemplateChange.Enabled = bTemplateCustom.Checked;
-            bTemplatePath.Text = "";
-            bTemplatePath.Enabled = bTemplateCustom.Checked;
-          
-        }
 
+        }
     }
 }

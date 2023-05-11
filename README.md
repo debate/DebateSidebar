@@ -1,8 +1,4 @@
-## **[Download](https://github.com/debate/DebateSidebar/releases/download/beta/DebateSidebarWordAddIn.zip)**
+**[Download Debate Sidebar](https://github.com/gulakov/DebateSidebarWordAddIn/releases/download/2.0.0/Debate.Sidebar.Word.AddIn.Setup.exe)**
 
-![preview](https://i.imgur.com/7hHGUxm.png)
+![preview](https://i.imgur.com/pbMZFpF.png)
 
-
-
-
-Debate Sidebar Word AddIn is  a Verbatim plugin  for high school and college policy & LD debate teams, built using Office COM AddIn with VSTO.
