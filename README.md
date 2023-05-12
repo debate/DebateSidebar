@@ -1,6 +1,6 @@
-**[Download Debate Sidebar - Verbatim pLugin (testing)](https://github.com/gulakov/DebateSidebarWordAddIn/releases/download/2.0.0/Debate.Sidebar.Word.AddIn.Setup.exe)**
+**[Download Debate Sidebar](https://github.com/debate/DebateSidebar/releases/download/beta/DebateSidebarWordAddIn.zip)**
 
-[Stable version](https://github.com/debate/DebateSidebar/releases/download/2.0.0/Debate.Sidebar.Word.AddIn.Setup.exe)
 
-![preview](https://i.imgur.com/pbMZFpF.png)
+![image](https://github.com/debate/DebateSidebar/assets/1274452/9be6ba83-85dc-4e1d-9573-86aa69328cd3)
+
 
