@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Text;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DebateSidebarWordAddIn
@@ -22,6 +21,12 @@ namespace DebateSidebarWordAddIn
 
             Globals.ThisAddIn.isSettingsOpen = true;
 
+            comboBox1.SelectedIndex = s.HeadingLevels - 1;
+            bReindexAutoOpen.Checked = s.ExpandHeadings;
+
+            k1.Text = s.k1;
+            k2.Text = s.k2;
+            k3.Text = s.k3;
 
         }
 
@@ -30,8 +35,10 @@ namespace DebateSidebarWordAddIn
 
             Globals.ThisAddIn.isSettingsOpen = false;
 
+            s.k1 = k1.Text;
+            s.k2 = k2.Text;
+            s.k3 = k3.Text;
 
-            
 
             s.Save();
         }
@@ -46,16 +53,20 @@ namespace DebateSidebarWordAddIn
 
         private void bFilesChange_Click(object sender, EventArgs e)
         {
-             if (dialogFolder.ShowDialog() == DialogResult.OK){
-                bTubPath.Text = dialogFolder.SelectedPath;
+
+            var dialogFolder = new FolderBrowserDialog();
+
+            if (dialogFolder.ShowDialog() == DialogResult.OK)
+            {
                 Properties.Settings.Default.FilesDirectory = dialogFolder.SelectedPath;
 
+                Properties.Settings.Default.Save();
             }
         }
 
 
-      
-        
+
+
         private void kKeyDown(object sender, KeyEventArgs e)
         {
             k = e.KeyData.ToString();
@@ -63,26 +74,34 @@ namespace DebateSidebarWordAddIn
 
         private void kKeyUp(object sender, KeyEventArgs e)
         {
-            ((TextBox) sender).Text = k;
+            ((TextBox)sender).Text = k;
         }
 
         private void kMouseClick(object sender, MouseEventArgs e)
         {
             Globals.ThisAddIn.isSettingsOpen = true;
 
-            ((TextBox) sender).Text = "";
+            ((TextBox)sender).Text = "";
         }
 
-        //Styles
 
-        private void bOpenTemplate_Click(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dialogFile.ShowDialog() == DialogResult.OK)
-                bTemplatePath.Text = dialogFile.FileName;
+            string selected = (string)comboBox1.SelectedItem;
+
+            s.HeadingLevels = Int32.Parse(selected.Last().ToString());
+            s.Save();
+
+
+
         }
 
-        private void bOpenWeb_CheckedChanged(object sender, EventArgs e)
+        private void bReindexAutoOpen_CheckedChanged(object sender, EventArgs e)
         {
+            s.ExpandHeadings = bReindexAutoOpen.Checked;
+
+            s.Save();
+
 
         }
     }

@@ -62,7 +62,7 @@
             // 
             this.bDebatePanelSwitch.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.bDebatePanelSwitch.Image = global::DebateSidebarWordAddIn.Properties.Resources.d8logo;
-            this.bDebatePanelSwitch.Label = "Debate";
+            this.bDebatePanelSwitch.Label = "DocMap";
             this.bDebatePanelSwitch.Name = "bDebatePanelSwitch";
             this.bDebatePanelSwitch.ShowImage = true;
             this.bDebatePanelSwitch.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.bDebatePanelSwitch_Click);

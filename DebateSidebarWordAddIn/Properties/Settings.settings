@@ -21,9 +21,9 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ExpandHeadings" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="HeadingLevels" Type="System.String" Scope="User">
+    <Setting Name="HeadingLevels" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="FontName" Type="System.String" Scope="User">
@@ -45,10 +45,10 @@
       <Value Profile="(Default)">F1</Value>
     </Setting>
     <Setting Name="k2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">F1, Control</Value>
+      <Value Profile="(Default)">R, Alt</Value>
     </Setting>
     <Setting Name="k3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">G, Control</Value>
+      <Value Profile="(Default)">M, Alt</Value>
     </Setting>
     <Setting Name="k4" Type="System.String" Scope="User">
       <Value Profile="(Default)">R, Control</Value>

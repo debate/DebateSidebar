@@ -12,7 +12,7 @@ namespace DebateSidebarWordAddIn.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -97,7 +97,7 @@ namespace DebateSidebarWordAddIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ExpandHeadings {
             get {
                 return ((bool)(this["ExpandHeadings"]));
@@ -110,9 +110,9 @@ namespace DebateSidebarWordAddIn.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public string HeadingLevels {
+        public int HeadingLevels {
             get {
-                return ((string)(this["HeadingLevels"]));
+                return ((int)(this["HeadingLevels"]));
             }
             set {
                 this["HeadingLevels"] = value;
@@ -193,7 +193,7 @@ namespace DebateSidebarWordAddIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("F1, Control")]
+        [global::System.Configuration.DefaultSettingValueAttribute("R, Alt")]
         public string k2 {
             get {
                 return ((string)(this["k2"]));
@@ -205,7 +205,7 @@ namespace DebateSidebarWordAddIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("G, Control")]
+        [global::System.Configuration.DefaultSettingValueAttribute("M, Alt")]
         public string k3 {
             get {
                 return ((string)(this["k3"]));

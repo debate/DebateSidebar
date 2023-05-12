@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Office.Tools;
+﻿using Microsoft.Office.Tools;
 using Microsoft.Office.Tools.Ribbon;
 
 namespace DebateSidebarWordAddIn
@@ -12,7 +11,7 @@ namespace DebateSidebarWordAddIn
                 if (CTP != null && CTP.Window != null
                     && CTP.Window.Equals(Globals.ThisAddIn.Application.ActiveDocument.ActiveWindow))
                 {
-                   
+
                     CTP.Visible = !CTP.Visible;
 
                     if (CTP.Visible)
@@ -23,14 +22,14 @@ namespace DebateSidebarWordAddIn
 
 
             Globals.ThisAddIn.addTaskbar();
-            Globals.ThisAddIn.addTemplate();
+            //Globals.ThisAddIn.addTemplate();
 
         }
 
         private void groupDebate_DialogLauncherClick(object sender, RibbonControlEventArgs e)
         {
-            if (Globals.ThisAddIn.speechDoc!=null && Globals.ThisAddIn.speechDoc.Equals(Globals.ThisAddIn.Application.ActiveDocument))
-                new ManageSpeech().ShowDialog(); 
+            if (Globals.ThisAddIn.speechDoc != null && Globals.ThisAddIn.speechDoc.Equals(Globals.ThisAddIn.Application.ActiveDocument))
+                new ManageSpeech().ShowDialog();
             else
                 new Settings().ShowDialog();
         }

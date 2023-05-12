@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Word;
 using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace DebateSidebarWordAddIn
@@ -20,7 +20,7 @@ namespace DebateSidebarWordAddIn
         //load
         private void Speech_Load(object sender, EventArgs e)
         {
-           
+
             populateName();
 
             foreach (Window win in Globals.ThisAddIn.Application.Windows)
@@ -38,11 +38,11 @@ namespace DebateSidebarWordAddIn
             }
             catch (Exception err)
             {
-               Debug.WriteLine(err); 
-               textCurrentDoc.Text += "None";
+                Debug.WriteLine(err);
+                textCurrentDoc.Text += "None";
             }
         }
-       
+
         private void speechName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData.ToString() == "Escape")
@@ -55,21 +55,21 @@ namespace DebateSidebarWordAddIn
         private void populateName()
         {
             string s = "Speech ";
-           
+
             if (DateTime.Now.Month < 10)
                 s += "0";
             s += DateTime.Now.Month + "-";
-            if (DateTime.Now.Day < 10) 
+            if (DateTime.Now.Day < 10)
                 s += "0";
             s += DateTime.Now.Day + " ";
-           
+
             s += Regex.Replace(DateTime.Now.ToShortTimeString(), ":.* ", "");
 
             s += " ";
             s += r1.Checked ? r1.Text : r2.Checked ? r2.Text : r3.Checked ? r3.Text : r4.Checked ?
                r4.Text : r5.Checked ? r5.Text : r6.Checked ? r6.Text : r7.Checked ? r7.Text : "";
 
-            
+
             speechName.Text = s;
         }
 
@@ -80,13 +80,13 @@ namespace DebateSidebarWordAddIn
 
         private void bSpeechAdd_Click(object sender, EventArgs e)
         {
-            
+
             Document d = Globals.ThisAddIn.Application.Documents.Add();
             Globals.ThisAddIn.speechDoc = d;
 
             string savePath = "";
             Properties.Settings s = Properties.Settings.Default;
-            savePath = s.SpeechDirectory != "" ? s.SpeechDirectory : s.FilesDirectory != "" ?  
+            savePath = s.SpeechDirectory != "" ? s.SpeechDirectory : s.FilesDirectory != "" ?
                 s.FilesDirectory : Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
             savePath += "\\" + speechName.Text;
@@ -100,7 +100,7 @@ namespace DebateSidebarWordAddIn
             }
             catch (Exception err)
             {
-                Debug.WriteLine(err); 
+                Debug.WriteLine(err);
                 d.Save();
             }
 
@@ -120,7 +120,7 @@ namespace DebateSidebarWordAddIn
 
         private void bReadOnline_Click(object sender, EventArgs e)
         {
-              Macros.UploadSpeech();
+            Macros.UploadSpeech();
         }
 
         private void bReadOffline_Click(object sender, EventArgs e)
