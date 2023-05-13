@@ -10,7 +10,6 @@ namespace DebateSidebarWordAddIn
     {
         //global objects
         public bool isSettingsOpen;
-        public Document speechDoc;
 
         //startup and document events
         private void ThisAddIn_Startup(object sender, EventArgs e)
@@ -106,7 +105,7 @@ namespace DebateSidebarWordAddIn
 
             CTP.DockPositionChanged += CTP_DockPositionChanged;
 
-            CTP.Visible = !doc.ActiveWindow.Caption.Contains("Speech");
+            CTP.Visible = true; 
 
         }
 

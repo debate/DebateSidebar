@@ -30,11 +30,10 @@ namespace DebateSidebarWordAddIn
         private void Sidebar_Load(object sender, EventArgs e)
         {
             //DocMap automatic on opening takes too long
-            int AUTOOPEN_WORDS_MAX = 2000000;
 
 
-            if (Properties.Settings.Default.ExpandHeadings &&
-                 a.ActiveDocument.Words.Count < AUTOOPEN_WORDS_MAX)
+
+            if (Properties.Settings.Default.ExpandHeadings )
             {
                 populateDoc();
                 indexLastTime = DateTime.Now.Minute * 60 + DateTime.Now.Second;
@@ -593,14 +592,6 @@ namespace DebateSidebarWordAddIn
                 case "Settings":
                     (new Settings()).ShowDialog();
                     break;
-                case "Send to Speech":
-                    Macros.SendToSpeech();
-                    break;
-                case "Manage Speech":
-                    Macros.SpeechManage();
-                    break;
-                case "Read Speech":
-                    Macros.ReadSpeech();
                     break;
                 case "Timer":
                     Macros.Timer();

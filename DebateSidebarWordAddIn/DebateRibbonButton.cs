@@ -22,15 +22,12 @@ namespace DebateSidebarWordAddIn
 
 
             Globals.ThisAddIn.addTaskbar();
-            //Globals.ThisAddIn.addTemplate();
 
         }
 
         private void groupDebate_DialogLauncherClick(object sender, RibbonControlEventArgs e)
         {
-            if (Globals.ThisAddIn.speechDoc != null && Globals.ThisAddIn.speechDoc.Equals(Globals.ThisAddIn.Application.ActiveDocument))
-                new ManageSpeech().ShowDialog();
-            else
+        
                 new Settings().ShowDialog();
         }
     }
