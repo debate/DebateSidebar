@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("DebateSidebarWordAddIn")]
+[assembly: AssemblyTitle("DebateSidebarWordAddin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Alex Gulakov")]
-[assembly: AssemblyProduct("DebateSidebarWordAddIn")]
+[assembly: AssemblyCompany("Debate-AI.com")]
+[assembly: AssemblyProduct("DebateSidebarWordAddin")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

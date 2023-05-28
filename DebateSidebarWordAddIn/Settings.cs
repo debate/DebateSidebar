@@ -21,12 +21,20 @@ namespace DebateSidebarWordAddIn
 
             Globals.ThisAddIn.isSettingsOpen = true;
 
-            comboBox1.SelectedIndex = s.HeadingLevels - 1;
-            bReindexAutoOpen.Checked = s.ExpandHeadings;
+            //bReindexAutoOpen.Checked = s.ExpandHeadings;
 
             k1.Text = s.k1;
             k2.Text = s.k2;
             k3.Text = s.k3;
+            k4.Text = s.k4;
+            k5.Text = s.k5;
+            k6.Text = s.k6;
+            k7.Text = s.k7;
+            k8.Text = s.k8;
+            k9.Text = s.k9;
+            k10.Text = s.k10;
+            k11.Text = s.k11;
+            k12.Text = s.k12;
 
         }
 
@@ -38,33 +46,34 @@ namespace DebateSidebarWordAddIn
             s.k1 = k1.Text;
             s.k2 = k2.Text;
             s.k3 = k3.Text;
+            s.k4 = k4.Text;
+            s.k5 = k5.Text;
+            s.k6 = k6.Text;
+            s.k7 = k7.Text;
+            s.k8 = k8.Text;
+            s.k9 = k9.Text;
+            s.k10 = k10.Text;
+            s.k11 = k11.Text;
+            s.k12 = k12.Text;
 
 
             s.Save();
         }
+
+
+
+        private void bFilesChange_Click(object sender, EventArgs e)
+        {
+            if (dialogFolder.ShowDialog() == DialogResult.OK)
+                s.FilesDirectory = dialogFolder.SelectedPath;
+        }
+
 
         private void bOK_Click(object sender, EventArgs e)
         {
 
             Close();
         }
-
-        //Folders
-
-        private void bFilesChange_Click(object sender, EventArgs e)
-        {
-
-            var dialogFolder = new FolderBrowserDialog();
-
-            if (dialogFolder.ShowDialog() == DialogResult.OK)
-            {
-                Properties.Settings.Default.FilesDirectory = dialogFolder.SelectedPath;
-
-                Properties.Settings.Default.Save();
-            }
-        }
-
-
 
 
         private void kKeyDown(object sender, KeyEventArgs e)
@@ -85,22 +94,34 @@ namespace DebateSidebarWordAddIn
         }
 
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+     
+
+        private void bReindexAutoOpen_CheckedChanged(object sender, EventArgs e)
         {
-            string selected = (string)comboBox1.SelectedItem;
+           // s.ExpandHeadings = bReindexAutoOpen.Checked;
 
-            s.HeadingLevels = Int32.Parse(selected.Last().ToString());
             s.Save();
-
 
 
         }
 
-        private void bReindexAutoOpen_CheckedChanged(object sender, EventArgs e)
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            s.ExpandHeadings = bReindexAutoOpen.Checked;
+            s.SelectAfterDocMap = checkBox3.Checked;
 
             s.Save();
+            
+
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
 
 
         }

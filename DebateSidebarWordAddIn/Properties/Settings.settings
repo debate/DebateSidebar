@@ -23,22 +23,16 @@
     <Setting Name="ExpandHeadings" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="HeadingLevels" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">4</Value>
-    </Setting>
     <Setting Name="FontName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Garamond</Value>
     </Setting>
     <Setting Name="FontSize" Type="System.String" Scope="User">
       <Value Profile="(Default)">11</Value>
     </Setting>
-    <Setting Name="SpeechDirectory" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="PreserveParagraphs" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UploadSpeech" Type="System.Boolean" Scope="User">
+    <Setting Name="SelectAfterDocMap" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="k1" Type="System.String" Scope="User">
@@ -77,20 +71,8 @@
     <Setting Name="k12" Type="System.String" Scope="User">
       <Value Profile="(Default)">Oemtilde, Alt</Value>
     </Setting>
-    <Setting Name="MinimizeUnread" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="MinimizeUnreadSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">8</Value>
-    </Setting>
-    <Setting Name="UnderlineBold" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="BoxHeading1" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="TimerPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

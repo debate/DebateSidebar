@@ -12,7 +12,7 @@ namespace DebateSidebarWordAddIn.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -109,18 +109,6 @@ namespace DebateSidebarWordAddIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public int HeadingLevels {
-            get {
-                return ((int)(this["HeadingLevels"]));
-            }
-            set {
-                this["HeadingLevels"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Garamond")]
         public string FontName {
             get {
@@ -145,18 +133,6 @@ namespace DebateSidebarWordAddIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SpeechDirectory {
-            get {
-                return ((string)(this["SpeechDirectory"]));
-            }
-            set {
-                this["SpeechDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool PreserveParagraphs {
             get {
@@ -170,12 +146,12 @@ namespace DebateSidebarWordAddIn.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UploadSpeech {
+        public bool SelectAfterDocMap {
             get {
-                return ((bool)(this["UploadSpeech"]));
+                return ((bool)(this["SelectAfterDocMap"]));
             }
             set {
-                this["UploadSpeech"] = value;
+                this["SelectAfterDocMap"] = value;
             }
         }
         
@@ -325,18 +301,6 @@ namespace DebateSidebarWordAddIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool MinimizeUnread {
-            get {
-                return ((bool)(this["MinimizeUnread"]));
-            }
-            set {
-                this["MinimizeUnread"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("8")]
         public int MinimizeUnreadSize {
             get {
@@ -344,42 +308,6 @@ namespace DebateSidebarWordAddIn.Properties {
             }
             set {
                 this["MinimizeUnreadSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UnderlineBold {
-            get {
-                return ((bool)(this["UnderlineBold"]));
-            }
-            set {
-                this["UnderlineBold"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool BoxHeading1 {
-            get {
-                return ((bool)(this["BoxHeading1"]));
-            }
-            set {
-                this["BoxHeading1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TimerPath {
-            get {
-                return ((string)(this["TimerPath"]));
-            }
-            set {
-                this["TimerPath"] = value;
             }
         }
     }

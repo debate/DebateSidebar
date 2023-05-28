@@ -21,7 +21,7 @@ namespace DebateSidebarWordAddIn
 
 
 
-            Globals.ThisAddIn.addTaskbar();
+            Globals.ThisAddIn.addSidebar();
 
         }
 
